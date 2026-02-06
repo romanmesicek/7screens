@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCOPE – 5 Fragen vor dem KI-Projekt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        background: #0F172A;
+        overflow: hidden;
+      }
+      /* Focus-visible für Keyboard-Navigation */
+      *:focus-visible {
+        outline: 3px solid #2563EB;
+        outline-offset: 2px;
+      }
+      button:focus-visible {
+        outline: 3px solid #2563EB;
+        outline-offset: 2px;
+      }
+      /* Reduzierte Bewegung für Vestibularstörungen */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip Link für Keyboard-Navigation -->
+    <a href="#main-content" class="skip-link" style="
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 9999;
+      padding: 16px 24px;
+      background: #2563EB;
+      color: #F9FAFB;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+    " onfocus="this.style.left='16px'; this.style.top='16px'; this.style.width='auto'; this.style.height='auto';" onblur="this.style.left='-9999px'; this.style.width='1px'; this.style.height='1px';">
+      Zum Hauptinhalt springen
+    </a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
