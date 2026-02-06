@@ -200,7 +200,7 @@ export function ModuleSelector({ onSelectModule, completedModules = [] }) {
       )}
 
       <div style={footerStyle}>
-        SCOPE AI Framework (<a href="https://mesicek.com" target="_blank" rel="noopener noreferrer" style={linkStyle}>Mesicek</a>, 2025)
+        © 2025 <a href="https://suska.app" target="_blank" rel="noopener noreferrer" style={linkStyle}>Sustainability Skills Academy</a>
       </div>
     </div>
   )
