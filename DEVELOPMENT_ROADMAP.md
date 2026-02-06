@@ -185,18 +185,13 @@ netlify deploy --prod
 
 ### Custom Domain
 
-**Geplant:** `scope.suska.app` (Subdomain) oder `suska.app/scope` (Subdirectory)
+**Entschieden:** `scope.suska.app`
 
-**Option A: Subdomain (empfohlen)**
-- DNS: CNAME `scope` → `scope-framework.netlify.app`
-- Netlify: Custom Domain im Dashboard hinzufügen
-- SSL: Automatisch via Let's Encrypt
-
-**Option B: Subdirectory**
-- Erfordert Reverse Proxy auf suska.app
-- Komplexer, aber alles unter einer Domain
-
-**Entscheidung ausstehend.**
+**Deployment-Schritte:**
+1. Netlify: Site aus GitHub-Repo erstellen
+2. Netlify: Custom Domain `scope.suska.app` hinzufügen
+3. DNS (suska.app): CNAME `scope` → `scope-framework.netlify.app`
+4. SSL: Automatisch via Let's Encrypt (Netlify)
 
 ### Environment Variables (falls nötig)
 
