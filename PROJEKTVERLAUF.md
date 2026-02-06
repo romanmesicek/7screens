@@ -155,6 +155,24 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 
 ---
 
+## Phase 10: Repository & Branding
+
+### 10.1 GitHub Repository erstellt
+- Repository: `romanmesicek/scope-framework`
+- Initial Commit mit 51 Dateien
+- Public Repository
+
+### 10.2 Domain entschieden
+- `scope.suska.app` (Subdomain-Lösung)
+- Deployment via Netlify geplant
+
+### 10.3 Footer-Branding geändert
+- Von: `SCOPE AI Framework (Mesicek, 2025)`
+- Zu: `© 2025 Sustainability Skills Academy`
+- Link: sustainability-skills.at
+
+---
+
 ## Phase 9: Deployment-Vorbereitung
 
 ### 9.1 ARIA-Labels erweitert
@@ -211,6 +229,10 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
                    ├─> 11b. Skip Link
                    ├─> 11c. Landmarks hinzugefügt
                    └─> 11d. Netlify Security Headers
+              └─> 12. Repository & Branding
+                   ├─> 12a. GitHub Repo erstellt
+                   ├─> 12b. Domain scope.suska.app
+                   └─> 12c. Footer: Sustainability Skills Academy
 ```
 
 ---
@@ -225,6 +247,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 | 7 | web-design-guidelines, feature-dev:code-reviewer |
 | 8 | algospeak, humanizer |
 | 9 | Manuell (ARIA, Netlify Config) |
+| 10 | GitHub CLI, Manuell |
 
 ---
 
@@ -237,7 +260,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 | Module | 5 |
 | Cards gesamt | 35 |
 | Bilder | 6 (WebP, Portrait) |
-| Iterationen | ~18 |
+| Iterationen | ~21 |
 | Dokumentationsdateien | 9 |
 
 ---

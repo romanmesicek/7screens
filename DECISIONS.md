@@ -28,6 +28,52 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ## Entscheidungen
 
+### 2025-02-06 – Branding: Sustainability Skills Academy
+
+**Kontext:** Footer-Attribution und Copyright für die App.
+
+**Vorher:** `SCOPE AI Framework (Mesicek, 2025)` mit Link zu mesicek.com
+
+**Nachher:** `© 2025 Sustainability Skills Academy` mit Link zu sustainability-skills.at
+
+**Begründung:** Die App ist ein Angebot der Sustainability Skills Academy, nicht eine persönliche Publikation. Klare institutionelle Zuordnung.
+
+**Betroffene Dateien:**
+- `src/components/SplashScreen.jsx`
+- `src/components/ModuleSelector.jsx`
+
+---
+
+### 2025-02-06 – Domain: scope.suska.app
+
+**Kontext:** Wahl zwischen Subdomain und Subdirectory für Deployment.
+
+**Optionen:**
+1. `scope.suska.app` (Subdomain)
+2. `suska.app/scope` (Subdirectory)
+
+**Entscheidung:** Option 1
+
+**Begründung:** Einfacher zu konfigurieren (CNAME), eigenständige SSL-Zertifikat-Verwaltung, keine Reverse-Proxy-Komplexität.
+
+**Deployment-Schritte:**
+1. Netlify: Site aus GitHub-Repo `romanmesicek/scope-framework`
+2. Netlify: Custom Domain `scope.suska.app`
+3. DNS: CNAME `scope` → `scope-framework.netlify.app`
+4. SSL: Automatisch via Let's Encrypt
+
+---
+
+### 2025-02-06 – Repository: scope-framework
+
+**Kontext:** GitHub-Repository für Versionskontrolle und Deployment.
+
+**Repository:** https://github.com/romanmesicek/scope-framework
+
+**Begründung:** Name `scope-framework` ist neutral und erweiterbar für zukünftige SCOPE-Inhalte (PDF-Generator, Workshop-Materialien).
+
+---
+
 ### 2025-02-06 – ARIA-Labels & Netlify Deployment-Konfiguration
 
 **Kontext:** Accessibility-Erweiterung und Deployment-Vorbereitung für Netlify.
