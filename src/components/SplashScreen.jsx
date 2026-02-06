@@ -157,7 +157,7 @@ export function SplashScreen({ onStart }) {
       </main>
 
       <div style={footerStyle}>
-        © 2025 <a href="https://suska.app" target="_blank" rel="noopener noreferrer" style={linkStyle}>Sustainability Skills Academy</a>
+        © 2025 <a href="https://sustainability-skills.at" target="_blank" rel="noopener noreferrer" style={linkStyle}>Sustainability Skills Academy</a>
       </div>
 
       <a
