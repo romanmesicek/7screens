@@ -185,13 +185,18 @@ netlify deploy --prod
 
 ### Custom Domain
 
-```toml
-# In netlify.toml (optional):
-# Domain wird im Netlify-Dashboard konfiguriert
+**Geplant:** `scope.suska.app` (Subdomain) oder `suska.app/scope` (Subdirectory)
 
-# Für Subdomain z.B.:
-# scope.36grad.com oder scope-schnellcheck.netlify.app
-```
+**Option A: Subdomain (empfohlen)**
+- DNS: CNAME `scope` → `scope-framework.netlify.app`
+- Netlify: Custom Domain im Dashboard hinzufügen
+- SSL: Automatisch via Let's Encrypt
+
+**Option B: Subdirectory**
+- Erfordert Reverse Proxy auf suska.app
+- Komplexer, aber alles unter einer Domain
+
+**Entscheidung ausstehend.**
 
 ### Environment Variables (falls nötig)
 
