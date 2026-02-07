@@ -2,7 +2,7 @@
 
 Micro-Learning-App zur nachhaltigen Bewertung von KI-Projekten.
 
-**Live:** `scope.suska.app` (Deployment ausstehend)
+**Live:** `demo-7screen.suska.app` (Deployment ausstehend)
 
 ## Was ist SCOPE?
 
@@ -29,7 +29,7 @@ SCOPE ist ein Framework zur Bewertung von KI-Projekten nach Nachhaltigkeitskrite
 - **Styling:** CSS-in-JS (inline styles)
 - **Fonts:** DM Sans, Source Sans 3
 - **Deployment:** Netlify
-- **Domain:** scope.suska.app
+- **Domain:** demo-7screen.suska.app
 
 ## Entwicklung
 
@@ -71,7 +71,7 @@ npm run build
 ### Ausstehend
 
 - [ ] **Netlify Deployment** (nächster Schritt)
-- [ ] DNS: CNAME scope → scope-framework.netlify.app
+- [ ] DNS: CNAME scope → demo-7screen.netlify.app
 - [ ] Keyboard-only Testing
 - [ ] Light Mode (optional)
 - [ ] localStorage für Fortschritt (optional)
@@ -81,8 +81,8 @@ npm run build
 
 1. **Netlify:** New site from Git → `romanmesicek/scope-framework`
 2. **Build Settings:** Automatisch aus `netlify.toml`
-3. **Custom Domain:** `scope.suska.app` hinzufügen
-4. **DNS (suska.app):** CNAME `scope` → `scope-framework.netlify.app`
+3. **Custom Domain:** `demo-7screen.suska.app` hinzufügen
+4. **DNS (suska.app):** CNAME `demo-7screen` → `demo-7screen.netlify.app`
 5. **SSL:** Automatisch via Let's Encrypt
 
 ## Dokumentation

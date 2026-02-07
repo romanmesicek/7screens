@@ -185,7 +185,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 - Public Repository
 
 ### 10.2 Domain entschieden
-- `scope.suska.app` (Subdomain-Lösung)
+- `demo-7screen.suska.app` (Subdomain-Lösung)
 - Deployment via Netlify geplant
 
 ### 10.3 Footer-Branding geändert
@@ -209,8 +209,8 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 
 ### Nächster Schritt: Deployment
 1. Netlify: Site aus GitHub-Repo erstellen
-2. Custom Domain: `scope.suska.app`
-3. DNS: CNAME `scope` → `scope-framework.netlify.app`
+2. Custom Domain: `demo-7screen.suska.app`
+3. DNS: CNAME `demo-7screen` → `demo-7screen.netlify.app`
 4. SSL: Automatisch via Let's Encrypt
 
 ---
@@ -251,7 +251,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
                    └─> 11d. Netlify Security Headers
               └─> 12. Repository & Branding
                    ├─> 12a. GitHub Repo erstellt
-                   ├─> 12b. Domain scope.suska.app
+                   ├─> 12b. Domain demo-7screen.suska.app
                    ├─> 12c. Footer: Sustainability Skills Academy
                    └─> 12d. Back-Button ModuleSelector
 ```

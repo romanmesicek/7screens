@@ -44,12 +44,12 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ---
 
-### 2025-02-06 – Domain: scope.suska.app
+### 2025-02-06 – Domain: demo-7screen.suska.app
 
 **Kontext:** Wahl zwischen Subdomain und Subdirectory für Deployment.
 
 **Optionen:**
-1. `scope.suska.app` (Subdomain)
+1. `demo-7screen.suska.app` (Subdomain)
 2. `suska.app/scope` (Subdirectory)
 
 **Entscheidung:** Option 1
@@ -58,8 +58,8 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 **Deployment-Schritte:**
 1. Netlify: Site aus GitHub-Repo `romanmesicek/scope-framework`
-2. Netlify: Custom Domain `scope.suska.app`
-3. DNS: CNAME `scope` → `scope-framework.netlify.app`
+2. Netlify: Custom Domain `demo-7screen.suska.app`
+3. DNS: CNAME `demo-7screen` → `demo-7screen.netlify.app`
 4. SSL: Automatisch via Let's Encrypt
 
 ---

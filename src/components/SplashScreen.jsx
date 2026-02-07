@@ -87,6 +87,29 @@ export function SplashScreen({ onStart }) {
     marginBottom: theme.spacing.xl,
   }
 
+  const demoBadgeStyle = {
+    fontFamily: theme.fonts.heading,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: '11px',
+    color: theme.colors.warning,
+    border: `1px solid ${theme.colors.warning}`,
+    borderRadius: '6px',
+    padding: '4px 14px',
+    letterSpacing: '2px',
+    marginBottom: theme.spacing.lg,
+  }
+
+  const linkHintStyle = {
+    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeights.regular,
+    fontSize: '11px',
+    color: theme.colors.borderLight,
+    lineHeight: 1.5,
+    maxWidth: '280px',
+    textAlign: 'center',
+    marginBottom: theme.spacing.lg,
+  }
+
   const buttonStyle = {
     fontFamily: theme.fonts.heading,
     fontWeight: theme.fontWeights.semibold,
@@ -136,13 +159,15 @@ export function SplashScreen({ onStart }) {
       <div style={overlayStyle} aria-hidden="true" />
 
       <main id="main-content" style={contentStyle}>
+        <div style={demoBadgeStyle}>DEMO</div>
+
         <h1 style={titleStyle}>5 Fragen</h1>
         <p style={subtitleStyle}>vor jedem KI-Projekt</p>
 
         <p style={descriptionStyle}>
           Das <span style={highlightStyle}>SCOPE-Framework</span> hilft Ihnen,
-          KI-Entscheidungen <span style={highlightStyle}>nachhaltig</span> zu treffen –
-          von der Notwendigkeit bis zur langfristigen Tragfähigkeit.
+          KI-Entscheidungen auf Basis ihrer ökologischen
+          und sozialen Wirkung zu treffen.
         </p>
 
         <p style={timeStyle}>5 Module · je 3 Minuten · ~15 Min. gesamt</p>
@@ -154,6 +179,7 @@ export function SplashScreen({ onStart }) {
         >
           Starten
         </button>
+
       </main>
 
       <div style={footerStyle}>

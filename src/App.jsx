@@ -7,6 +7,7 @@ import { moduleE } from './data/cards/e'
 import { CardContainer } from './components/CardContainer'
 import { ModuleSelector } from './components/ModuleSelector'
 import { SplashScreen } from './components/SplashScreen'
+import { InfoScreen } from './components/InfoScreen'
 import { ModuleComplete } from './components/ModuleComplete'
 
 const modulesMap = {
@@ -18,7 +19,7 @@ const modulesMap = {
 }
 
 function App() {
-  const [screen, setScreen] = useState('splash') // 'splash' | 'selector' | 'module' | 'complete'
+  const [screen, setScreen] = useState('splash') // 'splash' | 'info' | 'selector' | 'module' | 'complete'
   const [selectedModule, setSelectedModule] = useState(null)
   const [currentCard, setCurrentCard] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState({})
@@ -70,6 +71,10 @@ function App() {
   }
 
   const handleStartFromSplash = () => {
+    setScreen('info')
+  }
+
+  const handleContinueFromInfo = () => {
     setScreen('selector')
   }
 
@@ -156,6 +161,16 @@ function App() {
   // Splash Screen
   if (screen === 'splash') {
     return <SplashScreen onStart={handleStartFromSplash} />
+  }
+
+  // Info Screen
+  if (screen === 'info') {
+    return (
+      <InfoScreen
+        onContinue={handleContinueFromInfo}
+        onBack={handleBackToSplash}
+      />
+    )
   }
 
   // Module Selector

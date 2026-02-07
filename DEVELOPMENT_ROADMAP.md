@@ -185,12 +185,12 @@ netlify deploy --prod
 
 ### Custom Domain
 
-**Entschieden:** `scope.suska.app`
+**Entschieden:** `demo-7screen.suska.app`
 
 **Deployment-Schritte:**
 1. Netlify: Site aus GitHub-Repo erstellen
-2. Netlify: Custom Domain `scope.suska.app` hinzufügen
-3. DNS (suska.app): CNAME `scope` → `scope-framework.netlify.app`
+2. Netlify: Custom Domain `demo-7screen.suska.app` hinzufügen
+3. DNS (suska.app): CNAME `demo-7screen` → `demo-7screen.netlify.app`
 4. SSL: Automatisch via Let's Encrypt (Netlify)
 
 ### Environment Variables (falls nötig)
