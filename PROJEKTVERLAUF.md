@@ -155,24 +155,6 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 
 ---
 
-## Phase 10: Repository & Branding
-
-### 10.1 GitHub Repository erstellt
-- Repository: `romanmesicek/scope-framework`
-- Initial Commit mit 51 Dateien
-- Public Repository
-
-### 10.2 Domain entschieden
-- `scope.suska.app` (Subdomain-Lösung)
-- Deployment via Netlify geplant
-
-### 10.3 Footer-Branding geändert
-- Von: `SCOPE AI Framework (Mesicek, 2025)`
-- Zu: `© 2025 Sustainability Skills Academy`
-- Link: sustainability-skills.at
-
----
-
 ## Phase 9: Deployment-Vorbereitung
 
 ### 9.1 ARIA-Labels erweitert
@@ -192,6 +174,44 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 - Security Headers (CSP, X-Frame-Options, Permissions-Policy)
 - Cache-Control differenziert (Assets immutable, HTML no-cache)
 - SPA-Redirect für Client-Side-Routing
+
+---
+
+## Phase 10: Repository & Branding
+
+### 10.1 GitHub Repository erstellt
+- Repository: `romanmesicek/scope-framework`
+- Initial Commit mit 51 Dateien
+- Public Repository
+
+### 10.2 Domain entschieden
+- `scope.suska.app` (Subdomain-Lösung)
+- Deployment via Netlify geplant
+
+### 10.3 Footer-Branding geändert
+- Von: `SCOPE AI Framework (Mesicek, 2025)`
+- Zu: `© 2025 Sustainability Skills Academy`
+- Link: sustainability-skills.at
+
+### 10.4 Navigation verbessert
+- Back-Button auf ModuleSelector hinzugefügt
+- Konsistentes Styling (✕, transparent)
+
+---
+
+## Aktueller Status (2025-02-07)
+
+### Fertig
+- App vollständig implementiert und funktionsfähig
+- Alle 5 Module mit 35 Cards
+- Accessibility (WCAG 2.1 AA)
+- GitHub Repository: https://github.com/romanmesicek/scope-framework
+
+### Nächster Schritt: Deployment
+1. Netlify: Site aus GitHub-Repo erstellen
+2. Custom Domain: `scope.suska.app`
+3. DNS: CNAME `scope` → `scope-framework.netlify.app`
+4. SSL: Automatisch via Let's Encrypt
 
 ---
 
@@ -232,7 +252,8 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
               └─> 12. Repository & Branding
                    ├─> 12a. GitHub Repo erstellt
                    ├─> 12b. Domain scope.suska.app
-                   └─> 12c. Footer: Sustainability Skills Academy
+                   ├─> 12c. Footer: Sustainability Skills Academy
+                   └─> 12d. Back-Button ModuleSelector
 ```
 
 ---
@@ -266,4 +287,5 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 ---
 
 *Erstellt: 2025-02-06*
+*Aktualisiert: 2025-02-07*
 *Zweck: Grundlage für Mermaid-Prozessdiagramm*
