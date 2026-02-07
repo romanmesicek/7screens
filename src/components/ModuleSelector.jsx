@@ -164,7 +164,7 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
     height: '44px',
     borderRadius: '50%',
     border: 'none',
-    background: 'rgba(255, 255, 255, 0.1)',
+    background: 'transparent',
     color: theme.colors.textSecondary,
     fontSize: '20px',
     cursor: 'pointer',
@@ -186,7 +186,7 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
           onClick={onBack}
           aria-label="Zurück zur Startseite"
         >
-          ←
+          ✕
         </button>
       )}
 
