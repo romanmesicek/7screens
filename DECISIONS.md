@@ -57,20 +57,20 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 **Begründung:** Einfacher zu konfigurieren (CNAME), eigenständige SSL-Zertifikat-Verwaltung, keine Reverse-Proxy-Komplexität.
 
 **Deployment-Schritte:**
-1. Netlify: Site aus GitHub-Repo `romanmesicek/scope-framework`
+1. Netlify: Site aus GitHub-Repo `romanmesicek/demo-7screen`
 2. Netlify: Custom Domain `demo-7screen.suska.app`
 3. DNS: CNAME `demo-7screen` → `demo-7screen.netlify.app`
 4. SSL: Automatisch via Let's Encrypt
 
 ---
 
-### 2025-02-06 – Repository: scope-framework
+### 2025-02-06 – Repository: demo-7screen
 
 **Kontext:** GitHub-Repository für Versionskontrolle und Deployment.
 
-**Repository:** https://github.com/romanmesicek/scope-framework
+**Repository:** https://github.com/romanmesicek/demo-7screen
 
-**Begründung:** Name `scope-framework` ist neutral und erweiterbar für zukünftige SCOPE-Inhalte (PDF-Generator, Workshop-Materialien).
+**Begründung:** Name `demo-7screen` ist neutral und erweiterbar für zukünftige SCOPE-Inhalte (PDF-Generator, Workshop-Materialien).
 
 ---
 

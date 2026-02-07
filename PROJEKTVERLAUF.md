@@ -180,7 +180,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 ## Phase 10: Repository & Branding
 
 ### 10.1 GitHub Repository erstellt
-- Repository: `romanmesicek/scope-framework`
+- Repository: `romanmesicek/demo-7screen`
 - Initial Commit mit 51 Dateien
 - Public Repository
 
@@ -205,7 +205,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 - App vollständig implementiert und funktionsfähig
 - Alle 5 Module mit 35 Cards
 - Accessibility (WCAG 2.1 AA)
-- GitHub Repository: https://github.com/romanmesicek/scope-framework
+- GitHub Repository: https://github.com/romanmesicek/demo-7screen
 
 ### Nächster Schritt: Deployment
 1. Netlify: Site aus GitHub-Repo erstellen

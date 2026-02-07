@@ -79,7 +79,7 @@ npm run build
 
 ## Deployment-Anleitung
 
-1. **Netlify:** New site from Git → `romanmesicek/scope-framework`
+1. **Netlify:** New site from Git → `romanmesicek/demo-7screen`
 2. **Build Settings:** Automatisch aus `netlify.toml`
 3. **Custom Domain:** `demo-7screen.suska.app` hinzufügen
 4. **DNS (suska.app):** CNAME `demo-7screen` → `demo-7screen.netlify.app`
