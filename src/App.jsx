@@ -73,6 +73,10 @@ function App() {
     setScreen('selector')
   }
 
+  const handleBackToSplash = () => {
+    setScreen('splash')
+  }
+
   const handleSelectModule = (moduleId) => {
     setSelectedModule(moduleId)
     setCurrentCard(0)
@@ -160,6 +164,7 @@ function App() {
       <ModuleSelector
         onSelectModule={handleSelectModule}
         completedModules={completedModules}
+        onBack={handleBackToSplash}
       />
     )
   }

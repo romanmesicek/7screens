@@ -9,7 +9,7 @@ const modules = [
   { id: 'E', name: 'Endurance', color: theme.colors.moduleE, question: 'Ist die Lösung langfristig tragfähig?' },
 ]
 
-export function ModuleSelector({ onSelectModule, completedModules = [] }) {
+export function ModuleSelector({ onSelectModule, completedModules = [], onBack }) {
   const containerStyle = {
     minHeight: '100vh',
     background: theme.colors.background,
@@ -156,10 +156,39 @@ export function ModuleSelector({ onSelectModule, completedModules = [] }) {
     transition: theme.transitions.fast,
   }
 
+  const backButtonStyle = {
+    position: 'absolute',
+    top: theme.spacing.md,
+    left: theme.spacing.md,
+    width: '44px',
+    height: '44px',
+    borderRadius: '50%',
+    border: 'none',
+    background: 'rgba(255, 255, 255, 0.1)',
+    color: theme.colors.textSecondary,
+    fontSize: '20px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: theme.transitions.fast,
+    zIndex: 10,
+  }
+
   return (
     <div style={containerStyle}>
       <div style={backgroundStyle} />
       <div style={overlayStyle} />
+
+      {onBack && (
+        <button
+          style={backButtonStyle}
+          onClick={onBack}
+          aria-label="Zurück zur Startseite"
+        >
+          ←
+        </button>
+      )}
 
       <div style={headerStyle}>
         <h1 style={titleStyle}>SCOPE</h1>
