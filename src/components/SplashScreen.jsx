@@ -137,7 +137,7 @@ export function SplashScreen({ onStart }) {
 
       <main id="main-content" style={contentStyle}>
         <h1 style={titleStyle}>5 Fragen</h1>
-        <p style={subtitleStyle}>bevor Sie ein KI-Projekt starten</p>
+        <p style={subtitleStyle}>vor jedem KI-Projekt</p>
 
         <p style={descriptionStyle}>
           Das <span style={highlightStyle}>SCOPE-Framework</span> hilft Ihnen,
