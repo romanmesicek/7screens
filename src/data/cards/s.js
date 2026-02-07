@@ -33,7 +33,7 @@ export const moduleS = {
     {
       type: 'example',
       headline: 'Praxisbeispiel: Chatbot vs. FAQ-Seite',
-      body: 'Ein Mittelständler wollte einen KI-Chatbot für den Kundenservice. Nach Analyse: 80% der Anfragen betreffen 12 Themen.',
+      body: 'Ein mittelständisches Unternehmen wollte einen KI-Chatbot für den Kundenservice. Nach Analyse: 80% der Anfragen betreffen 12 Themen.',
       comparison: {
         left: { label: 'KI-Chatbot', cost: '120.000 €/Jahr' },
         right: { label: 'FAQ-Seite', cost: '5.000 €' },
