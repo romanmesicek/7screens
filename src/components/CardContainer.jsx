@@ -79,7 +79,7 @@ export function CardContainer({
 
   return (
     <div style={containerStyle} role="application" aria-label={`Modul ${module.id}: ${module.name}`}>
-      <Watermark letter={module.id} color={module.color} />
+      <Watermark letter={module.watermarkLetter || module.id} color={module.color} />
       <ProgressBar
         moduleName={module.name}
         currentCard={currentCard}

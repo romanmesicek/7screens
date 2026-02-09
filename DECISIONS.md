@@ -28,6 +28,73 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ## Entscheidungen
 
+### 2026-02-09 – Two-Deck-Implementierung im bestehenden Repo
+
+**Kontext:** Statt wie ursprünglich geplant ein neues Repo anzulegen, wurde die Two-Deck-Architektur direkt im bestehenden Repo implementiert. Die App beginnt jetzt mit einem Intro-Deck (7-Screen-Modell erklärt) und führt dann zum bestehenden SCOPE-Deck.
+
+**Architektur-Entscheidung:** Neuer `deck`-State (`'intro' | 'scope'`) in App.jsx. Innerhalb jedes Decks funktioniert der bestehende `screen`-State weiter.
+
+**Weitere Entscheidungen:**
+
+- **Skip-Link:** Ja – auf dem Intro-Splash gibt es "Direkt zu SCOPE →" für Leute, die das Format kennen
+- **DEMO-Badge:** Nur im SCOPE-Teil (Deck 2), da dieser das inhaltliche Anwendungsbeispiel ist
+- **Intro-Farbe:** `#D97706` (Amber) – warm, einladend, klar unterscheidbar von allen SCOPE-Farben
+- **InfoScreen:** Aus dem SCOPE-Flow entfernt – sein Inhalt ist jetzt Teil des Intro-Decks
+- **Watermark:** `watermarkLetter`-Feld im Modul-Objekt, Fallback auf `id`. Intro zeigt "7" statt "7S"
+
+**Neue Dateien:**
+
+- `src/components/IntroSplashScreen.jsx`
+- `src/components/TransitionScreen.jsx`
+- `src/data/cards/intro.js` (7 Screens mit Quellen aus Evidenzbericht)
+
+**Offene Aufgaben:**
+
+- Eigene Bilder für Intro-Splash und Intro-Hook beschaffen (aktuell Platzhalter)
+
+---
+
+### 2026-02-09 – Multi-Deck-Architektur & Templates
+
+**Kontext:** Das Projekt soll von einer einzelnen App (SCOPE) zu einer Plattform für beliebige 7-Screen-Lernmodule erweitert werden. Konkret: (1) ein Meta-Deck, das das 7-Screen-Format selbst erklärt, und (2) die Möglichkeit, weitere Decks parallel zu entwickeln.
+
+**Optionen Deployment:**
+1. URL-basiertes Routing (ein Build, mehrere Decks unter /scope-ai/, /7screen-intro/)
+2. Separater Build pro Deck (jeweils eigene Netlify-Site)
+3. Beides vorbereiten
+
+**Entscheidung Deployment:** Option 1 – URL-basiertes Routing
+
+**Optionen Content-Format:**
+1. Markdown-Template mit YAML-Frontmatter (braucht Parser)
+2. JSON-Template (1:1-Abbildung der Datenstruktur, kein Parser)
+3. Beides (Markdown als Author-Format + Build-Konvertierung)
+
+**Entscheidung Content-Format:** Option 2 – JSON-Template
+
+**Optionen Migration:**
+1. Bestehendes Repo umbauen (Risiko: App bricht kurzfristig)
+2. Neues Repo/Ordner (Card-Komponenten kopieren, Doppelpflege)
+3. Schrittweise migrieren (Deck-Abstraktion im bestehenden Repo)
+
+**Entscheidung Migration:** Option 2 – Neues Repo/Ordner
+
+**Optionen Meta-Deck Umfang:**
+1. 1 Modul (7 Screens) – kompakter Überblick, ~3 Min
+2. 7 Module (je 7 Screens) – ein Modul pro Screen-Typ, ~20 Min
+
+**Entscheidung Meta-Deck:** Option 1 – Ein Modul mit 7 Screens
+
+**Begründung:** JSON ist direkt von der bestehenden JS-Datenstruktur ableitbar und erfordert keinen Parser. Neues Repo vermeidet Risiken für die bestehende SCOPE-App. URL-basiertes Routing ermöglicht ein Deck-Ökosystem in einem Build. Ein kompaktes Meta-Modul reicht, um das Format zu demonstrieren.
+
+**Konsequenzen:**
+- `TEMPLATE_MODULE.json` erstellt – beschreibt alle 7 Card-Typen mit Pflichtfeldern und Varianten
+- `TEMPLATE_DECK.json` erstellt – beschreibt Deck-Metadaten (Branding, Module, Settings)
+- Neues Repo wird angelegt mit kopierten Card-Komponenten + Deck-Router
+- SCOPE-Daten bleiben im bestehenden Repo unangetastet
+
+---
+
 ### 2025-02-06 – Branding: Sustainability Skills Academy
 
 **Kontext:** Footer-Attribution und Copyright für die App.
@@ -44,12 +111,12 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ---
 
-### 2025-02-06 – Domain: demo-7screen.suska.app
+### 2025-02-06 – Domain: 7screens.suska.app
 
 **Kontext:** Wahl zwischen Subdomain und Subdirectory für Deployment.
 
 **Optionen:**
-1. `demo-7screen.suska.app` (Subdomain)
+1. `7screens.suska.app` (Subdomain)
 2. `suska.app/scope` (Subdirectory)
 
 **Entscheidung:** Option 1
@@ -57,20 +124,20 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 **Begründung:** Einfacher zu konfigurieren (CNAME), eigenständige SSL-Zertifikat-Verwaltung, keine Reverse-Proxy-Komplexität.
 
 **Deployment-Schritte:**
-1. Netlify: Site aus GitHub-Repo `romanmesicek/demo-7screen`
-2. Netlify: Custom Domain `demo-7screen.suska.app`
-3. DNS: CNAME `demo-7screen` → `demo-7screen.netlify.app`
+1. Netlify: Site aus GitHub-Repo `romanmesicek/7screens`
+2. Netlify: Custom Domain `7screens.suska.app`
+3. DNS: CNAME `7screens` → `7screens.netlify.app`
 4. SSL: Automatisch via Let's Encrypt
 
 ---
 
-### 2025-02-06 – Repository: demo-7screen
+### 2025-02-06 – Repository: 7screens
 
 **Kontext:** GitHub-Repository für Versionskontrolle und Deployment.
 
-**Repository:** https://github.com/romanmesicek/demo-7screen
+**Repository:** https://github.com/romanmesicek/7screens
 
-**Begründung:** Name `demo-7screen` ist neutral und erweiterbar für zukünftige SCOPE-Inhalte (PDF-Generator, Workshop-Materialien).
+**Begründung:** Name `7screens` ist neutral und erweiterbar für zukünftige SCOPE-Inhalte (PDF-Generator, Workshop-Materialien).
 
 ---
 

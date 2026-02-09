@@ -109,6 +109,22 @@ export function ActionCard({ card, color, checklistState, onChecklistChange }) {
     whiteSpace: 'nowrap',
   })
 
+  // Render checklist item text, with parenthetical content in gray
+  const renderItemText = (text) => {
+    const match = text.match(/^(.+?)(\s*\(.+\))$/)
+    if (match) {
+      return (
+        <>
+          {match[1]}
+          <span style={{ color: theme.colors.textSecondary, fontWeight: theme.fontWeights.regular }}>
+            {match[2]}
+          </span>
+        </>
+      )
+    }
+    return text
+  }
+
   const handleToggle = (index) => {
     const newState = [...checklistState]
     newState[index] = !newState[index]
@@ -137,9 +153,11 @@ export function ActionCard({ card, color, checklistState, onChecklistChange }) {
             <div style={checkboxStyle(checklistState[index])} aria-hidden="true">
               {checklistState[index] && '✓'}
             </div>
-            <span style={checkTextStyle}>{item}</span>
+            <span style={checkTextStyle}>{renderItemText(item)}</span>
             <span style={badgeStyle(checklistState[index])} aria-hidden="true">
-              {checklistState[index] ? 'Bedacht ✓' : 'Bedacht?'}
+              {checklistState[index]
+                ? (card.badgeLabel?.checked || 'Bedacht ✓')
+                : (card.badgeLabel?.unchecked || 'Bedacht?')}
             </span>
           </div>
         ))}

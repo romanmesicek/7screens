@@ -1,0 +1,136 @@
+{
+  "$schema": "Dieses Template beschreibt ein einzelnes Modul (7 Screens) für die 7-Screen-Lernplattform.",
+
+  "_ANLEITUNG": {
+    "1_Überblick": "Ein Modul besteht aus exakt 7 Screens (Cards) in fester Reihenfolge. Jeder Screen hat einen eigenen Typ mit spezifischen Feldern.",
+    "2_Ausfüllen": "Ersetze alle Werte in GROSSBUCHSTABEN durch echten Content. Entferne danach dieses _ANLEITUNG-Objekt und alle _KOMMENTAR-Felder.",
+    "3_Sprache": "Alle Texte in deutscher Sprache. Inklusive Sprache verwenden (Mitarbeitende, Kund*innen). Keine AI-Pattern-Wörter (crucial, vital, game-changing).",
+    "4_Tonalität": "Konkret, curiosity-driven, Zahlen statt Adjektive. Algospeak-Prinzipien: Curiosity Gaps, spezifische Zahlen, Beispiele mit Namen/Orten.",
+    "5_Umfang": "headline: max 80 Zeichen. body: 2-3 Sätze. quote: 1 Satz. cta: 1-2 Sätze."
+  },
+
+  "id": "X",
+  "_KOMMENTAR_id": "Ein kurzer Identifier (1-5 Zeichen). Bei SCOPE: S/C/O/P/E. Bei eigenen Decks frei wählbar.",
+
+  "name": "MODULNAME",
+  "_KOMMENTAR_name": "Anzeigename des Moduls, z.B. 'Sufficiency', 'Carbon', '7-Screen-Modell'",
+
+  "color": "#HEX_FARBE",
+  "_KOMMENTAR_color": "Hex-Farbcode für Akzentfarbe, Watermark, Progress-Bar. Empfehlung: satte, nicht zu helle Farbe für guten Kontrast auf dunklem Hintergrund (#0F172A).",
+
+  "coreQuestion": "DIE ZENTRALE FRAGE DIESES MODULS?",
+  "_KOMMENTAR_coreQuestion": "Die eine Leitfrage, die sich durch alle 7 Screens zieht. Wird im ModuleSelector angezeigt.",
+
+  "cards": [
+
+    {
+      "_SCREEN": "1 von 7 — Hook",
+      "_ZWECK": "Aufmerksamkeit gewinnen. Überraschende Zahl oder provokante These. Der Nutzer soll denken: 'Das will ich wissen.'",
+      "type": "hook",
+      "headline": "ÜBERRASCHENDE AUSSAGE ODER ZAHL. NEUGIER WECKEN.",
+      "body": "2-3 SÄTZE KONTEXT. WARUM IST DAS RELEVANT? WAS STECKT DAHINTER?",
+      "source": "OPTIONALE QUELLENANGABE (z.B. 'de Vries, 2023')"
+    },
+
+    {
+      "_SCREEN": "2 von 7 — Content (Fakten/Statistiken)",
+      "_ZWECK": "Fakten liefern. Zahlen, die das Hook-Thema untermauern. Zwei Varianten möglich.",
+      "type": "content",
+      "headline": "ÜBERSCHRIFT ZU DEN FAKTEN",
+      "body": "2-3 SÄTZE ERKLÄRUNG ZU DEN ZAHLEN.",
+
+      "_VARIANTE_A_einzelne_Statistik": {
+        "stat": "87%",
+        "statLabel": "EIN WORT (z.B. 'scheitern', 'Ersparnis')",
+        "source": "QUELLENANGABE"
+      },
+      "_VARIANTE_B_mehrere_Statistiken": {
+        "stats": [
+          { "value": "ZAHL", "label": "KURZES LABEL" },
+          { "value": "ZAHL", "label": "KURZES LABEL" },
+          { "value": "ZAHL", "label": "KURZES LABEL" }
+        ],
+        "source": "QUELLENANGABE"
+      },
+      "_VARIANTE_C_ohne_Statistik": {
+        "_hinweis": "headline + body reichen auch ohne Zahlen. Dann stat/stats/source weglassen."
+      },
+
+      "_KOMMENTAR": "Wähle EINE Variante. Entferne die anderen und die _VARIANTE-Keys. stat wird groß (48px) angezeigt, stats als Reihe."
+    },
+
+    {
+      "_SCREEN": "3 von 7 — Concept (Gegenüberstellung)",
+      "_ZWECK": "Kernkonzept vermitteln. Zwei Seiten einer Idee gegenüberstellen. Wird als Zwei-Spalten-Layout mit 'vs.' dargestellt.",
+      "type": "concept",
+      "headline": "KERNAUSSAGE ALS ÜBERSCHRIFT",
+      "body": "2-3 SÄTZE ERKLÄRUNG. WAS BEDEUTET DIESER GEGENSATZ KONKRET?",
+      "conceptLeft": {
+        "title": "BEGRIFF LINKS",
+        "description": "KURZE ERKLÄRUNG (max 6 Worte)"
+      },
+      "conceptRight": {
+        "title": "BEGRIFF RECHTS",
+        "description": "KURZE ERKLÄRUNG (max 6 Worte)"
+      }
+    },
+
+    {
+      "_SCREEN": "4 von 7 — Example (Praxisbeispiel)",
+      "_ZWECK": "Konkretes Beispiel aus der Praxis. Idealerweise mit Vergleich (Kosten, Aufwand, Ergebnis). Je spezifischer, desto besser.",
+      "type": "example",
+      "headline": "Praxisbeispiel: KONKRETER FALL",
+      "body": "2-3 SÄTZE KONTEXT. WER, WAS, WARUM? NAMEN UND ORTE MACHEN ES GREIFBAR.",
+      "comparison": {
+        "left": {
+          "label": "OPTION A",
+          "cost": "ZAHL ODER KENNWERT"
+        },
+        "right": {
+          "label": "OPTION B",
+          "cost": "ZAHL ODER KENNWERT"
+        },
+        "result": "FAZIT IN MAX 5 WORTEN"
+      }
+    },
+
+    {
+      "_SCREEN": "5 von 7 — Action (Interaktive Checkliste)",
+      "_ZWECK": "Reflexion & Selbstcheck. 3-5 Fragen/Aufgaben zum Abhaken. Sollten in 60 Sekunden beantwortbar sein. Label: 'Reflexion'.",
+      "type": "action",
+      "headline": "AKTIVIERENDER TITEL (z.B. 'Der 30-Sekunden-Test')",
+      "body": "1-2 SÄTZE EINLEITUNG. WAS SOLLEN DIE LERNENDEN TUN?",
+      "checklistItems": [
+        "FRAGE ODER AUFGABE 1",
+        "FRAGE ODER AUFGABE 2",
+        "FRAGE ODER AUFGABE 3"
+      ],
+      "_KOMMENTAR": "3-5 Items. Jedes Item ist ein String. Formuliere als Frage oder als Handlungsaufforderung."
+    },
+
+    {
+      "_SCREEN": "6 von 7 — Quiz (Multiple Choice)",
+      "_ZWECK": "Wissen testen. Eine Frage, drei Antwortmöglichkeiten, genau eine richtig. Nach Antwort erscheint Feedback-Text. Label: 'Quiz'.",
+      "type": "quiz",
+      "headline": "QUIZ-TITEL (z.B. 'Der Suffizienz-Test')",
+      "question": "SITUATIVE FRAGE. KONKRETES SZENARIO BESCHREIBEN, DANN FRAGEN: 'WAS TUN SIE?'",
+      "options": [
+        { "text": "ANTWORT A (falsch)", "correct": false },
+        { "text": "ANTWORT B (richtig)", "correct": true },
+        { "text": "ANTWORT C (falsch)", "correct": false }
+      ],
+      "feedback": "2-3 SÄTZE ERKLÄRUNG WARUM DIE RICHTIGE ANTWORT RICHTIG IST. LERNEFFEKT VERSTÄRKEN.",
+      "_KOMMENTAR": "Genau 3 options. Genau eine mit correct: true. Position der richtigen Antwort variieren (nicht immer B)."
+    },
+
+    {
+      "_SCREEN": "7 von 7 — Takeaway (Leitfrage + CTA)",
+      "_ZWECK": "Abschluss. Eine Leitfrage zum Mitnehmen + ein konkreter nächster Schritt. Label: 'Leitfrage'.",
+      "type": "takeaway",
+      "headline": "Ihre Leitfrage für heute:",
+      "quote": "„EINE FRAGE, DIE ZUM NACHDENKEN ANREGT UND DAS MODUL ZUSAMMENFASST?"",
+      "cta": "KONKRETER NÄCHSTER SCHRITT. WAS SOLLEN DIE LERNENDEN ALS NÄCHSTES TUN?"
+    }
+
+  ]
+}

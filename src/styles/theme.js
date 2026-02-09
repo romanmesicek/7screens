@@ -6,6 +6,7 @@ export const theme = {
     moduleO: '#EA580C',
     moduleP: '#7C3AED',
     moduleE: '#0891B2',
+    moduleIntro: '#D97706',
 
     // Common colors
     background: '#0F172A',

@@ -65,6 +65,59 @@
 
 ---
 
+## Phase 2b: Two-Deck-Architektur (Intro + SCOPE)
+
+**Status:** ✅ Abgeschlossen (2026-02-09)
+
+### Architektur
+
+Die App besteht jetzt aus zwei sequenziellen Decks:
+1. **Deck 1 (Intro):** 7-Screen-Modell erklärt – 1 Modul, 7 Screens
+2. **Deck 2 (SCOPE):** KI-Nachhaltigkeit – 5 Module, je 7 Screens (bestehend)
+
+### Flow
+
+```
+IntroSplashScreen → 7 Intro-Screens → TransitionScreen → SplashScreen (SCOPE) → ModuleSelector → Cards
+                 ↘ [Skip: Direkt zu SCOPE →]
+```
+
+### Aufgaben
+
+- [x] Deck-State (`'intro' | 'scope'`) in App.jsx
+- [x] IntroSplashScreen.jsx (neuer Einstieg, Amber-Akzent, Skip-Link)
+- [x] TransitionScreen.jsx (Brücke zwischen Deck 1 und 2)
+- [x] Intro-Moduldaten: `src/data/cards/intro.js` (7 Screens, Quellen aus Evidenzbericht)
+- [x] Theme: `moduleIntro: '#D97706'` (Amber)
+- [x] imageCredits: Platzhalter für Intro-Bilder
+- [x] CardContainer: Watermark-Letter Fallback (`watermarkLetter || id`)
+- [x] InfoScreen aus SCOPE-Flow entfernt
+- [x] DEMO-Badge nur im SCOPE-Teil
+- [x] `npm run build` erfolgreich
+- [x] Eigene Bilder für Intro-Splash und Intro-Hook beschaffen (Unsplash)
+- [x] Bilder zu WebP konvertieren, in `public/images/` ablegen
+- [x] imageCredits.js Platzhalter mit echten Credits ersetzen
+
+### Neue Dateien
+
+| Datei | Zweck |
+|-------|-------|
+| `src/components/IntroSplashScreen.jsx` | Einstiegs-Screen für Deck 1 |
+| `src/components/TransitionScreen.jsx` | Brücke Deck 1 → Deck 2 |
+| `src/data/cards/intro.js` | 7 Screens über das 7-Screen-Modell |
+
+### Geänderte Dateien
+
+| Datei | Änderung |
+|-------|----------|
+| `src/App.jsx` | Deck-State, zweistufige Render-Logik, InfoScreen entfernt |
+| `src/components/CardContainer.jsx` | Watermark-Letter Fallback |
+| `src/styles/theme.js` | `moduleIntro` Farbe hinzugefügt |
+| `src/data/cards/index.js` | `moduleIntro` Export |
+| `src/data/imageCredits.js` | Intro-Platzhalter-Credits |
+
+---
+
 ## Phase 3: Enhancement
 
 ### Aufgaben
@@ -185,12 +238,12 @@ netlify deploy --prod
 
 ### Custom Domain
 
-**Entschieden:** `demo-7screen.suska.app`
+**Entschieden:** `7screens.suska.app`
 
 **Deployment-Schritte:**
 1. Netlify: Site aus GitHub-Repo erstellen
-2. Netlify: Custom Domain `demo-7screen.suska.app` hinzufügen
-3. DNS (suska.app): CNAME `demo-7screen` → `demo-7screen.netlify.app`
+2. Netlify: Custom Domain `7screens.suska.app` hinzufügen
+3. DNS (suska.app): CNAME `7screens` → `7screens.netlify.app`
 4. SSL: Automatisch via Let's Encrypt (Netlify)
 
 ### Environment Variables (falls nötig)

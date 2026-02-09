@@ -3,6 +3,7 @@ export { moduleC } from './c'
 export { moduleO } from './o'
 export { moduleP } from './p'
 export { moduleE } from './e'
+export { moduleIntro } from './intro'
 
 export const modules = {
   S: () => import('./s').then(m => m.moduleS),

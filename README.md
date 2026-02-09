@@ -1,12 +1,20 @@
-# SCOPE Framework
+# 7 Screens – Lernen in 3 Minuten
 
-Micro-Learning-App zur nachhaltigen Bewertung von KI-Projekten.
+Micro-Learning-App mit wissenschaftlich fundiertem 7-Screen-Format. Jeder Screen aktiviert einen eigenen Lernmechanismus – von Neugier wecken bis zum aktiven Abruf.
 
-**Live:** `demo-7screen.suska.app` (Deployment ausstehend)
+**Live:** `7screens.suska.app`
 
-## Was ist SCOPE?
+## Konzept
 
-SCOPE ist ein Framework zur Bewertung von KI-Projekten nach Nachhaltigkeitskriterien:
+Das 7-Screen-Format komprimiert Lerninhalte in 7 aufeinander abgestimmte Screens (~3 Minuten pro Modul). Die App besteht aus zwei Decks:
+
+### Deck 1: Das Format verstehen
+
+1 Modul mit 7 Screens, das die Lernmechanismen hinter dem Format erklärt (Microlearning, Cognitive Load Theory, Testing Effect).
+
+### Deck 2: SCOPE – KI nachhaltig bewerten
+
+5 Module mit je 7 Screens zur Bewertung von KI-Projekten nach Nachhaltigkeitskriterien (SCOPE AI Framework, Mesicek 2025):
 
 | Modul | Dimension | Kernfrage |
 |-------|-----------|-----------|
@@ -16,96 +24,38 @@ SCOPE ist ein Framework zur Bewertung von KI-Projekten nach Nachhaltigkeitskrite
 | **P** | Power | Wer kontrolliert die KI? |
 | **E** | Endurance | Ist die Lösung langfristig tragfähig? |
 
-## Format
+## 7-Screen-Struktur
 
-- 5 Module × 7 Cards = 35 Screens
-- ~3 Minuten pro Modul
-- Mobile-first (9:16 Story-Format)
-- Interaktiv: Quiz, Checklisten
+Jedes Modul folgt der gleichen Architektur:
+
+| Screen | Typ | Lernmechanismus |
+|--------|-----|-----------------|
+| 1 | Hook | Curiosity Gap |
+| 2 | Content | Cognitive Load Theory |
+| 3 | Concept | Schema-Bildung |
+| 4 | Example | Situated Learning |
+| 5 | Action | Implementation Intentions |
+| 6 | Quiz | Testing Effect |
+| 7 | Takeaway | Recency-Effekt |
 
 ## Tech Stack
 
-- **Framework:** React 18 + Vite
+- **Framework:** React 18 + Vite 5
 - **Styling:** CSS-in-JS (inline styles)
 - **Fonts:** DM Sans, Source Sans 3
 - **Deployment:** Netlify
-- **Domain:** demo-7screen.suska.app
+- **Domain:** 7screens.suska.app
 
 ## Entwicklung
 
 ```bash
-# Installation
 npm install
-
-# Development Server
-npm run dev
-
-# Production Build
-npm run build
+npm run dev       # Development Server
+npm run build     # Production Build
 ```
-
-## Projekt-Status
-
-**Stand: 2025-02-07**
-
-### Abgeschlossen
-
-- [x] Alle 5 Module implementiert (S, C, O, P, E)
-- [x] 7 Card-Typen (Hook, Content, Concept, Example, Action, Quiz, Takeaway)
-- [x] Navigation (Touch, Keyboard, Mouse)
-- [x] Splash Screen mit Framework-Intro
-- [x] Modul-Abschluss-Flow
-- [x] Design-System (Fonts, Farben, Schatten)
-- [x] Accessibility (WCAG 2.1 AA)
-  - Focus-visible States
-  - ARIA-Labels
-  - Skip Link
-  - prefers-reduced-motion
-  - Touch Targets 44px
-- [x] Hochkant-Bilder (WebP, Unsplash)
-- [x] Algospeak-optimierte Texte
-- [x] Gewaltfreie Kommunikation
-- [x] GitHub Repository
-- [x] Netlify-Konfiguration (Security Headers, Caching)
-
-### Ausstehend
-
-- [ ] **Netlify Deployment** (nächster Schritt)
-- [ ] DNS: CNAME scope → demo-7screen.netlify.app
-- [ ] Keyboard-only Testing
-- [ ] Light Mode (optional)
-- [ ] localStorage für Fortschritt (optional)
-- [ ] PDF-Export (optional)
-
-## Deployment-Anleitung
-
-1. **Netlify:** New site from Git → `romanmesicek/demo-7screen`
-2. **Build Settings:** Automatisch aus `netlify.toml`
-3. **Custom Domain:** `demo-7screen.suska.app` hinzufügen
-4. **DNS (suska.app):** CNAME `demo-7screen` → `demo-7screen.netlify.app`
-5. **SSL:** Automatisch via Let's Encrypt
-
-## Dokumentation
-
-| Datei | Inhalt |
-|-------|--------|
-| `CLAUDE.md` | Arbeitsanweisungen für Claude Code |
-| `PROJECT_OVERVIEW.md` | Zielgruppe, Format, Tonalität |
-| `CONTENT_MODULES.md` | Alle 35 Cards mit deutschem Text |
-| `TECHNICAL_SPECS.md` | Architektur, Komponenten, State |
-| `DESIGN_ASSETS.md` | Farben, Typografie, Icons |
-| `DEVELOPMENT_ROADMAP.md` | Phasen, Testing, Deployment |
-| `DECISIONS.md` | Architekturentscheidungen |
-| `PROJEKTVERLAUF.md` | Entwicklungsiterationen |
-| `CONTENT_SOURCES.md` | Akademische Quellen |
 
 ## Credits
 
+- **Content & Coding:** Roman Mesicek, 2026
 - **Framework:** SCOPE AI Framework (Mesicek, 2025)
-- **Entwicklung:** Claude Opus 4.5
 - **Bilder:** Unsplash (siehe `src/data/imageCredits.js`)
-
-## Lizenz
-
-© 2025 Sustainability Skills Academy
-https://sustainability-skills.at

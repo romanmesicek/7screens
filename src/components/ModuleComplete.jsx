@@ -23,10 +23,14 @@ const moduleColors = {
   E: theme.colors.moduleE,
 }
 
-export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
+export function ModuleComplete({ moduleId, onNextModule, onBackToOverview, completedModules = [] }) {
   const currentIndex = moduleOrder.indexOf(moduleId)
-  const nextModuleId = currentIndex < moduleOrder.length - 1 ? moduleOrder[currentIndex + 1] : null
-  const isLastModule = !nextModuleId
+  const allCompleted = moduleOrder.every(id => completedModules.includes(id))
+
+  // Find next uncompleted module (in order), or next in sequence if all done
+  const nextUncompleted = moduleOrder.find(id => !completedModules.includes(id))
+  const nextInSequence = currentIndex < moduleOrder.length - 1 ? moduleOrder[currentIndex + 1] : null
+  const nextModuleId = allCompleted ? null : (nextUncompleted || null)
   const color = moduleColors[moduleId]
 
   const containerStyle = {
@@ -72,7 +76,7 @@ export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
     marginBottom: theme.spacing.xl,
   }
 
-  const nextBtnColor = nextModuleId ? moduleColors[nextModuleId] : color
+  const nextBtnColor = (nextModuleId && moduleColors[nextModuleId]) || color
   const nextButtonStyle = {
     fontFamily: theme.fonts.heading,
     fontWeight: theme.fontWeights.semibold,
@@ -122,7 +126,7 @@ export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
     width: '12px',
     height: '12px',
     borderRadius: '50%',
-    background: index <= currentIndex ? moduleColors[moduleOrder[index]] : theme.colors.borderLight,
+    background: completedModules.includes(moduleOrder[index]) ? moduleColors[moduleOrder[index]] : theme.colors.borderLight,
     transition: theme.transitions.fast,
   })
 
@@ -139,7 +143,7 @@ export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
         ))}
       </div>
 
-      {isLastModule ? (
+      {allCompleted ? (
         <>
           <button style={nextButtonStyle} onClick={onBackToOverview}>
             Alle Module abgeschlossen!
@@ -148,7 +152,7 @@ export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
             Zurück zur Übersicht
           </button>
         </>
-      ) : (
+      ) : nextModuleId ? (
         <>
           <button style={nextButtonStyle} onClick={() => onNextModule(nextModuleId)}>
             Weiter zu {moduleNames[nextModuleId]}
@@ -158,6 +162,10 @@ export function ModuleComplete({ moduleId, onNextModule, onBackToOverview }) {
             Zurück zur Übersicht
           </button>
         </>
+      ) : (
+        <button style={backLinkStyle} onClick={onBackToOverview}>
+          Zurück zur Übersicht
+        </button>
       )}
     </div>
   )

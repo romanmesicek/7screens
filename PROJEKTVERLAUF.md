@@ -180,12 +180,12 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 ## Phase 10: Repository & Branding
 
 ### 10.1 GitHub Repository erstellt
-- Repository: `romanmesicek/demo-7screen`
+- Repository: `romanmesicek/7screens`
 - Initial Commit mit 51 Dateien
 - Public Repository
 
 ### 10.2 Domain entschieden
-- `demo-7screen.suska.app` (Subdomain-Lösung)
+- `7screens.suska.app` (Subdomain-Lösung)
 - Deployment via Netlify geplant
 
 ### 10.3 Footer-Branding geändert
@@ -205,12 +205,12 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 - App vollständig implementiert und funktionsfähig
 - Alle 5 Module mit 35 Cards
 - Accessibility (WCAG 2.1 AA)
-- GitHub Repository: https://github.com/romanmesicek/demo-7screen
+- GitHub Repository: https://github.com/romanmesicek/7screens
 
 ### Nächster Schritt: Deployment
 1. Netlify: Site aus GitHub-Repo erstellen
-2. Custom Domain: `demo-7screen.suska.app`
-3. DNS: CNAME `demo-7screen` → `demo-7screen.netlify.app`
+2. Custom Domain: `7screens.suska.app`
+3. DNS: CNAME `7screens` → `7screens.netlify.app`
 4. SSL: Automatisch via Let's Encrypt
 
 ---
@@ -251,7 +251,7 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
                    └─> 11d. Netlify Security Headers
               └─> 12. Repository & Branding
                    ├─> 12a. GitHub Repo erstellt
-                   ├─> 12b. Domain demo-7screen.suska.app
+                   ├─> 12b. Domain 7screens.suska.app
                    ├─> 12c. Footer: Sustainability Skills Academy
                    └─> 12d. Back-Button ModuleSelector
 ```

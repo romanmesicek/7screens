@@ -17,7 +17,24 @@ export const splashCredit = {
   alt: 'A wind turbine in a field of wildflowers',
 }
 
+export const introSplashCredit = {
+  id: '8_RAu7IklwU',
+  localPath: '/images/intro-splash.webp',
+  photographer: 'Sean Sinclair',
+  photographerUrl: 'https://unsplash.com/@seanwsinclair',
+  unsplashUrl: 'https://unsplash.com/photos/8_RAu7IklwU',
+  alt: 'Blue and orange light digital wallpaper',
+}
+
 export const imageCredits = {
+  '7S': {
+    id: 'tEVGmMaPFXk',
+    localPath: '/images/hooks/7s-hook.webp',
+    photographer: 'Alina Grubnyak',
+    photographerUrl: 'https://unsplash.com/@alinnnaaaa',
+    unsplashUrl: 'https://unsplash.com/photos/tEVGmMaPFXk',
+    alt: 'Abstract black and white visualization of a brain and neural network',
+  },
   S: {
     id: 'F7jvodoDxWA',
     localPath: '/images/hooks/s-hook.webp',

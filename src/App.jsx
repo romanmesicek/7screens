@@ -4,10 +4,12 @@ import { moduleC } from './data/cards/c'
 import { moduleO } from './data/cards/o'
 import { moduleP } from './data/cards/p'
 import { moduleE } from './data/cards/e'
+import { moduleIntro } from './data/cards/intro'
 import { CardContainer } from './components/CardContainer'
 import { ModuleSelector } from './components/ModuleSelector'
 import { SplashScreen } from './components/SplashScreen'
-import { InfoScreen } from './components/InfoScreen'
+import { IntroSplashScreen } from './components/IntroSplashScreen'
+import { TransitionScreen } from './components/TransitionScreen'
 import { ModuleComplete } from './components/ModuleComplete'
 
 const modulesMap = {
@@ -19,7 +21,9 @@ const modulesMap = {
 }
 
 function App() {
-  const [screen, setScreen] = useState('splash') // 'splash' | 'info' | 'selector' | 'module' | 'complete'
+  // Deck-level state: 'intro' or 'scope'
+  const [deck, setDeck] = useState('intro')
+  const [screen, setScreen] = useState('splash') // 'splash' | 'module' | 'transition' | 'selector' | 'complete'
   const [selectedModule, setSelectedModule] = useState(null)
   const [currentCard, setCurrentCard] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState({})
@@ -29,34 +33,46 @@ function App() {
   // Touch handling for swipe
   const [touchStart, setTouchStart] = useState(null)
 
-  const currentModule = selectedModule ? modulesMap[selectedModule] : null
+  // Resolve current module from either deck
+  const currentModule = deck === 'intro'
+    ? (screen === 'module' ? moduleIntro : null)
+    : (selectedModule ? modulesMap[selectedModule] : null)
   const totalCards = currentModule?.cards.length || 0
+
+  // Current module ID for quiz/checklist state keys
+  const currentModuleId = deck === 'intro' ? '7S' : selectedModule
 
   // Initialize checklist state for module
   useEffect(() => {
-    if (selectedModule && !checklistStates[selectedModule]) {
-      const actionCard = modulesMap[selectedModule].cards.find(c => c.type === 'action')
-      if (actionCard) {
-        setChecklistStates(prev => ({
-          ...prev,
-          [selectedModule]: new Array(actionCard.checklistItems.length).fill(false)
-        }))
-      }
+    if (!currentModuleId || checklistStates[currentModuleId]) return
+    const moduleData = deck === 'intro' ? moduleIntro : modulesMap[currentModuleId]
+    const actionCard = moduleData?.cards.find(c => c.type === 'action')
+    if (actionCard) {
+      setChecklistStates(prev => ({
+        ...prev,
+        [currentModuleId]: new Array(actionCard.checklistItems.length).fill(false)
+      }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedModule])
+  }, [currentModuleId, deck])
 
   const goNext = useCallback(() => {
     if (currentCard < totalCards - 1) {
       setCurrentCard(currentCard + 1)
     } else {
-      // Last card - show completion screen
-      if (!completedModules.includes(selectedModule)) {
-        setCompletedModules(prev => [...prev, selectedModule])
+      // Last card reached
+      if (deck === 'intro') {
+        // Intro deck: go to transition screen
+        setScreen('transition')
+      } else {
+        // SCOPE deck: show completion screen
+        if (!completedModules.includes(selectedModule)) {
+          setCompletedModules(prev => [...prev, selectedModule])
+        }
+        setScreen('complete')
       }
-      setScreen('complete')
     }
-  }, [currentCard, totalCards, selectedModule, completedModules])
+  }, [currentCard, totalCards, deck, selectedModule, completedModules])
 
   const goPrev = useCallback(() => {
     if (currentCard > 0) {
@@ -64,22 +80,55 @@ function App() {
     }
   }, [currentCard])
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
+    if (deck === 'intro') {
+      setSelectedModule(null)
+      setCurrentCard(0)
+      setScreen('splash')
+    } else {
+      setSelectedModule(null)
+      setCurrentCard(0)
+      setScreen('selector')
+    }
+  }, [deck])
+
+  // --- Intro Deck Handlers ---
+  const handleIntroStart = () => {
+    setSelectedModule('7S')
+    setCurrentCard(0)
+    setScreen('module')
+  }
+
+  const handleSkipToScope = () => {
+    setDeck('scope')
+    setScreen('splash')
     setSelectedModule(null)
     setCurrentCard(0)
-    setScreen('selector')
   }
 
-  const handleStartFromSplash = () => {
-    setScreen('info')
-  }
-
-  const handleContinueFromInfo = () => {
-    setScreen('selector')
-  }
-
-  const handleBackToSplash = () => {
+  const handleTransitionContinue = () => {
+    setDeck('scope')
     setScreen('splash')
+    setSelectedModule(null)
+    setCurrentCard(0)
+  }
+
+  const handleBackToIntro = () => {
+    setDeck('intro')
+    setScreen('splash')
+    setSelectedModule(null)
+    setCurrentCard(0)
+  }
+
+  // --- SCOPE Deck Handlers ---
+  const handleBackToScopeSplash = () => {
+    setScreen('splash')
+    setSelectedModule(null)
+    setCurrentCard(0)
+  }
+
+  const handleScopeStart = () => {
+    setScreen('selector')
   }
 
   const handleSelectModule = (moduleId) => {
@@ -144,11 +193,11 @@ function App() {
   }
 
   const handleQuizAnswer = (answer) => {
-    setQuizAnswers(prev => ({ ...prev, [selectedModule]: answer }))
+    setQuizAnswers(prev => ({ ...prev, [currentModuleId]: answer }))
   }
 
   const handleChecklistChange = (newState) => {
-    setChecklistStates(prev => ({ ...prev, [selectedModule]: newState }))
+    setChecklistStates(prev => ({ ...prev, [currentModuleId]: newState }))
   }
 
   const appStyle = {
@@ -158,44 +207,75 @@ function App() {
     touchAction: 'pan-y',
   }
 
-  // Splash Screen
+  // ========================
+  // DECK: INTRO
+  // ========================
+  if (deck === 'intro') {
+    if (screen === 'splash') {
+      return (
+        <IntroSplashScreen
+          onStart={handleIntroStart}
+          onSkip={handleSkipToScope}
+        />
+      )
+    }
+
+    if (screen === 'module') {
+      return (
+        <div
+          style={appStyle}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <CardContainer
+            module={moduleIntro}
+            currentCard={currentCard}
+            onPrev={goPrev}
+            onNext={goNext}
+            onBack={goBack}
+            quizAnswer={quizAnswers['7S'] ?? null}
+            onQuizAnswer={handleQuizAnswer}
+            checklistState={checklistStates['7S'] || []}
+            onChecklistChange={handleChecklistChange}
+          />
+        </div>
+      )
+    }
+
+    if (screen === 'transition') {
+      return <TransitionScreen onContinue={handleTransitionContinue} onBack={handleBackToIntro} />
+    }
+  }
+
+  // ========================
+  // DECK: SCOPE
+  // ========================
   if (screen === 'splash') {
-    return <SplashScreen onStart={handleStartFromSplash} />
+    return <SplashScreen onStart={handleScopeStart} onBack={handleBackToIntro} />
   }
 
-  // Info Screen
-  if (screen === 'info') {
-    return (
-      <InfoScreen
-        onContinue={handleContinueFromInfo}
-        onBack={handleBackToSplash}
-      />
-    )
-  }
-
-  // Module Selector
   if (screen === 'selector') {
     return (
       <ModuleSelector
         onSelectModule={handleSelectModule}
         completedModules={completedModules}
-        onBack={handleBackToSplash}
+        onBack={handleBackToScopeSplash}
       />
     )
   }
 
-  // Module Complete Screen
   if (screen === 'complete') {
     return (
       <ModuleComplete
         moduleId={selectedModule}
         onNextModule={handleNextModule}
         onBackToOverview={handleBackToOverview}
+        completedModules={completedModules}
       />
     )
   }
 
-  // Module Cards
+  // SCOPE Module Cards
   return (
     <div
       style={appStyle}

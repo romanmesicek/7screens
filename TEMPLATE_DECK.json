@@ -1,0 +1,98 @@
+{
+  "$schema": "Dieses Template beschreibt ein Deck – ein eigenständiges Lernpaket mit Splash, Modulen und Branding.",
+
+  "_ANLEITUNG": {
+    "1_Was_ist_ein_Deck": "Ein Deck ist ein in sich geschlossenes Lernpaket. Es hat eine eigene Landing-Page, ein eigenes Farbschema und 1-N Module (je 7 Screens).",
+    "2_Beispiel": "Das SCOPE-Deck hat 5 Module (S, C, O, P, E). Ein 'Intro'-Deck könnte nur 1 Modul haben.",
+    "3_Ausfüllen": "Ersetze alle GROSSBUCHSTABEN-Werte. Entferne _ANLEITUNG und _KOMMENTAR-Felder vor dem Einsatz.",
+    "4_Module": "Jedes Modul wird in einer separaten Datei definiert (siehe TEMPLATE_MODULE.json). Hier werden nur die Referenzen und Metadaten aufgeführt."
+  },
+
+  "deckId": "KURZER-SLUG",
+  "_KOMMENTAR_deckId": "URL-fähiger Identifier, z.B. 'scope-ai', '7screen-intro', 'ai-ethics'. Wird für Routing verwendet: /scope-ai/, /7screen-intro/",
+
+  "title": "DECK-TITEL",
+  "_KOMMENTAR_title": "Wird auf dem Splash-Screen und im Browser-Tab angezeigt. z.B. 'SCOPE', '7-Screen-Modell'",
+
+  "subtitle": "KURZE BESCHREIBUNG IN EINEM SATZ",
+  "_KOMMENTAR_subtitle": "Wird unter dem Titel auf dem Splash-Screen angezeigt. z.B. 'KI-Projekte nachhaltig bewerten – in 5 Modulen à 3 Minuten'",
+
+  "slug": "/PFAD/",
+  "_KOMMENTAR_slug": "URL-Pfad für Routing. Identisch mit deckId in den meisten Fällen.",
+
+  "branding": {
+    "splashImage": "/images/DECK-NAME/splash.webp",
+    "_KOMMENTAR_splashImage": "Hintergrundbild für Splash-Screen und ModuleSelector. WebP, ca. 480px breit.",
+
+    "splashImageCredit": {
+      "photographer": "NAME",
+      "photographerUrl": "https://unsplash.com/@HANDLE",
+      "unsplashUrl": "https://unsplash.com/photos/PHOTO-ID",
+      "alt": "ALT-TEXT FÜR DAS BILD"
+    },
+
+    "accentColor": "#HEX",
+    "_KOMMENTAR_accentColor": "Primäre Akzentfarbe des Decks. Wird für den Splash-Button und allgemeine Highlights verwendet.",
+
+    "footer": {
+      "copyright": "© 2025 ORGANISATION",
+      "url": "https://WEBSITE.TLD",
+      "label": "ORGANISATIONSNAME"
+    }
+  },
+
+  "modules": [
+    {
+      "id": "X",
+      "file": "./cards/x.js",
+      "_KOMMENTAR": "Referenz auf die Moduldatei. id muss mit dem id-Feld in der Moduldatei übereinstimmen."
+    }
+  ],
+
+  "_KOMMENTAR_modules": "Array mit 1-N Modulen. Reihenfolge bestimmt die Anzeige im ModuleSelector. Jedes Modul hat eine eigene Datei nach TEMPLATE_MODULE.json.",
+
+  "settings": {
+    "showProgressCount": true,
+    "_KOMMENTAR_showProgressCount": "Zeige 'X/N Module abgeschlossen' im ModuleSelector. Bei nur 1 Modul auf false setzen.",
+
+    "showModuleSelector": true,
+    "_KOMMENTAR_showModuleSelector": "Bei nur 1 Modul kann man direkt zum Modul springen und den Selector überspringen.",
+
+    "hookImages": {
+      "X": {
+        "localPath": "/images/DECK-NAME/hooks/x-hook.webp",
+        "photographer": "NAME",
+        "photographerUrl": "https://unsplash.com/@HANDLE",
+        "unsplashUrl": "https://unsplash.com/photos/PHOTO-ID",
+        "alt": "ALT-TEXT"
+      }
+    },
+    "_KOMMENTAR_hookImages": "Hintergrundbilder für die Hook-Cards (Screen 1) jedes Moduls. Key = Modul-ID."
+  },
+
+  "_BEISPIEL_SCOPE": {
+    "deckId": "scope-ai",
+    "title": "SCOPE",
+    "subtitle": "KI-Projekte nachhaltig bewerten – in 5 Modulen à 3 Minuten",
+    "modules": [
+      { "id": "S", "file": "./cards/s.js" },
+      { "id": "C", "file": "./cards/c.js" },
+      { "id": "O", "file": "./cards/o.js" },
+      { "id": "P", "file": "./cards/p.js" },
+      { "id": "E", "file": "./cards/e.js" }
+    ]
+  },
+
+  "_BEISPIEL_INTRO": {
+    "deckId": "7screen-intro",
+    "title": "7 Screens",
+    "subtitle": "In 3 Minuten verstehen, wie Micro-Learning funktioniert",
+    "modules": [
+      { "id": "7S", "file": "./cards/overview.js" }
+    ],
+    "settings": {
+      "showProgressCount": false,
+      "showModuleSelector": false
+    }
+  }
+}

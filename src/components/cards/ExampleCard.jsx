@@ -91,6 +91,16 @@ export function ExampleCard({ card, color }) {
     boxShadow: `0 4px 12px ${color}40`,
   }
 
+  const sourceStyle = {
+    textAlign: 'center',
+    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeights.regular,
+    fontSize: '11px',
+    color: theme.colors.borderLight,
+    marginTop: theme.spacing.xs,
+    fontStyle: 'italic',
+  }
+
   return (
     <div style={containerStyle}>
       <div style={accentBarStyle} />
@@ -110,7 +120,11 @@ export function ExampleCard({ card, color }) {
               <div style={optionCostStyle(false)}>{card.comparison.right.cost}</div>
             </div>
           </div>
-          <div style={resultStyle}>{card.comparison.result}</div>
+          {card.comparison.source ? (
+            <div style={sourceStyle}>{card.comparison.result} — {card.comparison.source}</div>
+          ) : (
+            <div style={resultStyle}>{card.comparison.result}</div>
+          )}
         </>
       )}
     </div>

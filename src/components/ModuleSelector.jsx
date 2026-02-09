@@ -71,6 +71,13 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
     maxWidth: '300px',
   }
 
+  const timeStyle = {
+    fontFamily: theme.fonts.body,
+    fontSize: theme.fontSizes.small,
+    color: theme.colors.borderLight,
+    marginTop: theme.spacing.sm,
+  }
+
   const progressStyle = {
     fontFamily: theme.fonts.body,
     fontSize: theme.fontSizes.small,
@@ -156,23 +163,22 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
     transition: theme.transitions.fast,
   }
 
-  const backButtonStyle = {
-    position: 'absolute',
-    top: theme.spacing.md,
-    left: theme.spacing.md,
-    width: '44px',
-    height: '44px',
-    borderRadius: '50%',
-    border: 'none',
-    background: 'transparent',
+  const backLinkStyle = {
+    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeights.regular,
+    fontSize: theme.fontSizes.small,
     color: theme.colors.textSecondary,
-    fontSize: '20px',
+    background: 'none',
+    border: 'none',
     cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    textDecoration: 'underline',
+    textDecorationColor: theme.colors.border,
+    textUnderlineOffset: '3px',
+    padding: theme.spacing.sm,
+    marginTop: theme.spacing.md,
     transition: theme.transitions.fast,
-    zIndex: 10,
+    position: 'relative',
+    zIndex: 2,
   }
 
   return (
@@ -180,21 +186,13 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
       <div style={backgroundStyle} />
       <div style={overlayStyle} />
 
-      {onBack && (
-        <button
-          style={backButtonStyle}
-          onClick={onBack}
-          aria-label="Zurück zur Startseite"
-        >
-          ✕
-        </button>
-      )}
-
       <div style={headerStyle}>
         <h1 style={titleStyle}>SCOPE</h1>
         <p style={subtitleStyle}>
-          KI-Projekte nachhaltig bewerten – in 5 Modulen à 3 Minuten
+          Ein Entscheidungsmodell zur Bewertung von sozialen
+          und ökologischen Auswirkungen von KI-Projekten
         </p>
+        <p style={timeStyle}>5 Module · je 3 Minuten</p>
       </div>
 
       <div style={modulesListStyle} role="list" aria-label="SCOPE Module">
@@ -228,9 +226,16 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
         </p>
       )}
 
-      <div style={footerStyle}>
-        © 2025 <a href="https://sustainability-skills.at" target="_blank" rel="noopener noreferrer" style={linkStyle}>Sustainability Skills Academy</a>
-      </div>
+      {onBack && (
+        <button
+          style={backLinkStyle}
+          onClick={onBack}
+          aria-label="Zurück"
+        >
+          ← Zurück
+        </button>
+      )}
+
     </div>
   )
 }

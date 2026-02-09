@@ -1,6 +1,7 @@
 import { theme } from '../styles/theme'
+import { introSplashCredit } from '../data/imageCredits'
 
-export function SplashScreen({ onStart, onBack }) {
+export function IntroSplashScreen({ onStart, onSkip }) {
   const containerStyle = {
     minHeight: '100vh',
     background: theme.colors.background,
@@ -16,7 +17,7 @@ export function SplashScreen({ onStart, onBack }) {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundImage: 'url(/images/splash.webp)',
+    backgroundImage: `url(${introSplashCredit.localPath})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     zIndex: 0,
@@ -29,9 +30,9 @@ export function SplashScreen({ onStart, onBack }) {
     right: 0,
     bottom: 0,
     background: `linear-gradient(to bottom,
-      rgba(17, 24, 39, 0.5) 0%,
-      rgba(17, 24, 39, 0.8) 50%,
-      rgba(17, 24, 39, 0.98) 100%)`,
+      rgba(17, 24, 39, 0.3) 0%,
+      rgba(17, 24, 39, 0.6) 50%,
+      rgba(17, 24, 39, 0.92) 100%)`,
     zIndex: 1,
   }
 
@@ -50,20 +51,21 @@ export function SplashScreen({ onStart, onBack }) {
   const titleStyle = {
     fontFamily: theme.fonts.heading,
     fontWeight: theme.fontWeights.bold,
-    fontSize: '40px',
+    fontSize: '44px',
     color: theme.colors.textPrimary,
-    marginBottom: theme.spacing.xl,
-    letterSpacing: '2px',
-    lineHeight: 1.2,
+    marginBottom: theme.spacing.sm,
+    letterSpacing: '3px',
   }
 
   const subtitleStyle = {
     fontFamily: theme.fonts.body,
     fontWeight: theme.fontWeights.semibold,
-    fontSize: '15px',
-    color: theme.colors.textSecondary,
-    letterSpacing: '1px',
+    fontSize: '20px',
+    color: theme.colors.textPrimary,
+    letterSpacing: '0.5px',
+    lineHeight: 1.2,
     marginBottom: theme.spacing.xl,
+    maxWidth: '320px',
   }
 
   const descriptionStyle = {
@@ -77,7 +79,7 @@ export function SplashScreen({ onStart, onBack }) {
   }
 
   const highlightStyle = {
-    color: theme.colors.textPrimary,
+    color: theme.colors.textSecondary,
     fontWeight: theme.fontWeights.semibold,
   }
 
@@ -88,45 +90,23 @@ export function SplashScreen({ onStart, onBack }) {
     marginBottom: theme.spacing.xl,
   }
 
-  const demoBadgeStyle = {
-    fontFamily: theme.fonts.heading,
-    fontWeight: theme.fontWeights.bold,
-    fontSize: '11px',
-    color: theme.colors.warning,
-    border: `1px solid ${theme.colors.warning}`,
-    borderRadius: '6px',
-    padding: '4px 14px',
-    letterSpacing: '2px',
-    marginBottom: theme.spacing.lg,
-  }
-
-  const linkHintStyle = {
-    fontFamily: theme.fonts.body,
-    fontWeight: theme.fontWeights.regular,
-    fontSize: '11px',
-    color: theme.colors.borderLight,
-    lineHeight: 1.5,
-    maxWidth: '280px',
-    textAlign: 'center',
-    marginBottom: theme.spacing.lg,
-  }
-
   const buttonStyle = {
     fontFamily: theme.fonts.heading,
     fontWeight: theme.fontWeights.semibold,
     fontSize: theme.fontSizes.body,
     color: theme.colors.textPrimary,
-    background: theme.colors.moduleS,
+    background: theme.colors.moduleIntro,
     border: 'none',
     borderRadius: '12px',
     padding: `${theme.spacing.md} ${theme.spacing.xl}`,
     cursor: 'pointer',
     transition: theme.transitions.fast,
-    boxShadow: '0 4px 16px rgba(37, 99, 235, 0.35)',
+    boxShadow: '0 4px 16px rgba(217, 119, 6, 0.35)',
     letterSpacing: '0.5px',
+    marginBottom: theme.spacing.lg,
   }
 
-  const backLinkStyle = {
+  const skipLinkStyle = {
     fontFamily: theme.fonts.body,
     fontWeight: theme.fontWeights.regular,
     fontSize: theme.fontSizes.small,
@@ -138,7 +118,6 @@ export function SplashScreen({ onStart, onBack }) {
     textDecorationColor: theme.colors.border,
     textUnderlineOffset: '3px',
     padding: theme.spacing.sm,
-    marginTop: theme.spacing.md,
     transition: theme.transitions.fast,
   }
 
@@ -159,53 +138,40 @@ export function SplashScreen({ onStart, onBack }) {
     textDecoration: 'none',
   }
 
-  const creditStyle = {
-    position: 'absolute',
-    bottom: theme.spacing.xs,
-    right: theme.spacing.sm,
-    fontFamily: theme.fonts.body,
-    fontSize: '10px',
-    color: 'rgba(255,255,255,0.3)',
-    textDecoration: 'none',
-    zIndex: 3,
-  }
-
   return (
     <div style={containerStyle}>
       <div style={backgroundStyle} aria-hidden="true" />
       <div style={overlayStyle} aria-hidden="true" />
 
       <main id="main-content" style={contentStyle}>
-        <div style={demoBadgeStyle}>DEMO</div>
-
-        <h1 style={titleStyle}>5 Fragen<br />vor jedem<br />KI-Projekt</h1>
+        <h1 style={titleStyle}>7 Screens</h1>
+        <p style={subtitleStyle}>Wie Lernen in 3 Minuten funktioniert</p>
 
         <p style={descriptionStyle}>
-          Dieses Entscheidungsmodell hilft Ihnen,
-          KI-Projekte auf Basis ihrer ökologischen
-          und sozialen Wirkung zu bewerten.
+          Jeder Screen aktiviert einen eigenen{' '}
+          <span style={highlightStyle}>Lernmechanismus</span> –
+          von Neugier wecken über Wissen strukturieren
+          bis zum aktiven Abruf. Wissenschaftlich fundiert,
+          kompakt verpackt.
         </p>
 
-        <p style={timeStyle}>5 Module · je 3 Minuten · ~15 Min. gesamt</p>
+        <p style={timeStyle}>1 Modul · 7 Screens · ~3 Minuten</p>
 
         <button
           style={buttonStyle}
           onClick={onStart}
-          aria-label="SCOPE-Module starten"
+          aria-label="7-Screen-Format kennenlernen"
         >
-          Starten
+          Format kennenlernen
         </button>
 
-        {onBack && (
-          <button
-            style={backLinkStyle}
-            onClick={onBack}
-            aria-label="Zurück zum Anfang"
-          >
-            ← Zurück zur Einführung
-          </button>
-        )}
-
+        <button
+          style={skipLinkStyle}
+          onClick={onSkip}
+          aria-label="Direkt zum Anwendungsbeispiel"
+        >
+          Direkt zum Anwendungsbeispiel →
+        </button>
       </main>
 
       <div style={{
@@ -221,12 +187,21 @@ export function SplashScreen({ onStart, onBack }) {
       </div>
 
       <a
-        href="https://unsplash.com/photos/uRXeR2bQa5Y"
+        href={introSplashCredit.unsplashUrl}
         target="_blank"
         rel="noopener noreferrer"
-        style={creditStyle}
+        style={{
+          position: 'absolute',
+          bottom: theme.spacing.xs,
+          right: theme.spacing.sm,
+          fontFamily: theme.fonts.body,
+          fontSize: '10px',
+          color: 'rgba(255,255,255,0.3)',
+          textDecoration: 'none',
+          zIndex: 3,
+        }}
       >
-        Photo: Đào Việt Hoàng
+        Photo: {introSplashCredit.photographer}
       </a>
     </div>
   )
