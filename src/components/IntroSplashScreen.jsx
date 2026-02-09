@@ -8,7 +8,8 @@ export function IntroSplashScreen({ onStart, onSkip }) {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   }
 
   const backgroundStyle = {

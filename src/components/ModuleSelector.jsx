@@ -18,7 +18,8 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
     flexDirection: 'column',
     alignItems: 'center',
     position: 'relative',
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   }
 
   const backgroundStyle = {

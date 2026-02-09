@@ -7,7 +7,8 @@ export function SplashScreen({ onStart, onBack }) {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   }
 
   const backgroundStyle = {
