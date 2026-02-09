@@ -125,7 +125,7 @@ export function CardContainer({
         color={module.color}
         onBack={onBack}
       />
-      <div style={{ flex: 1, position: 'relative', minHeight: 0 }}>
+      <div style={{ flex: 1, position: 'relative', minHeight: 0, display: 'flex', flexDirection: 'column' }}>
         <main id="main-content" ref={cardAreaRef} style={cardAreaStyle} onScroll={checkScrollState} aria-label={`Karte ${currentCard + 1} von ${module.cards.length}`}>
           {renderCard()}
         </main>
