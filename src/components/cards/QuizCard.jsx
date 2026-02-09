@@ -3,7 +3,7 @@ import { theme } from '../../styles/theme'
 export function QuizCard({ card, color, selectedAnswer, onAnswerSelect }) {
   const containerStyle = {
     position: 'relative',
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

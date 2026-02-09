@@ -7,14 +7,13 @@ export function HookCard({ card, color, moduleId }) {
 
   const containerStyle = {
     position: 'relative',
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
     padding: theme.spacing.lg,
     paddingBottom: theme.spacing.xl,
     zIndex: 1,
-    overflow: 'hidden',
   }
 
   const backgroundStyle = hasImage ? {

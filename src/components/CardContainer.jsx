@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import { theme } from '../styles/theme'
 import { Watermark } from './Watermark'
 import { ProgressBar } from './ProgressBar'
@@ -34,10 +35,47 @@ export function CardContainer({
     overflow: 'hidden',
   }
 
+  const cardAreaRef = useRef(null)
+  const [canScroll, setCanScroll] = useState(false)
+
+  // Check if content is scrollable and if user has reached the bottom
+  const checkScrollState = () => {
+    const el = cardAreaRef.current
+    if (!el) return
+    const isScrollable = el.scrollHeight > el.clientHeight
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 5
+    setCanScroll(isScrollable && !atBottom)
+  }
+
+  // Reset scroll position on card change
+  useEffect(() => {
+    const el = cardAreaRef.current
+    if (el) {
+      el.scrollTop = 0
+      requestAnimationFrame(checkScrollState)
+    }
+  }, [currentCard, quizAnswer])
+
   const cardAreaStyle = {
     flex: 1,
     position: 'relative',
-    overflow: 'hidden',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    WebkitOverflowScrolling: 'touch',
+    minHeight: 0,
+  }
+
+  const scrollFadeStyle = {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '40px',
+    background: `linear-gradient(transparent, ${theme.colors.background})`,
+    pointerEvents: 'none',
+    opacity: canScroll ? 1 : 0,
+    transition: theme.transitions.fast,
+    zIndex: 2,
   }
 
   const card = module.cards[currentCard]
@@ -87,9 +125,12 @@ export function CardContainer({
         color={module.color}
         onBack={onBack}
       />
-      <main id="main-content" style={cardAreaStyle} aria-label={`Karte ${currentCard + 1} von ${module.cards.length}`}>
-        {renderCard()}
-      </main>
+      <div style={{ flex: 1, position: 'relative', minHeight: 0 }}>
+        <main id="main-content" ref={cardAreaRef} style={cardAreaStyle} onScroll={checkScrollState} aria-label={`Karte ${currentCard + 1} von ${module.cards.length}`}>
+          {renderCard()}
+        </main>
+        <div style={scrollFadeStyle} aria-hidden="true" />
+      </div>
       <Navigation
         currentCard={currentCard}
         totalCards={module.cards.length}

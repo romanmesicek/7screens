@@ -11,7 +11,7 @@ export function TakeawayCard({ card, color }) {
 
   const containerStyle = {
     position: 'relative',
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

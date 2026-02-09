@@ -3,7 +3,7 @@ import { theme } from '../../styles/theme'
 export function ActionCard({ card, color, checklistState, onChecklistChange }) {
   const containerStyle = {
     position: 'relative',
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
