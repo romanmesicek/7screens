@@ -58,6 +58,8 @@ Lies zuerst:
 | Quellenangaben | `CONTENT_SOURCES.md` |
 | Architektur-Entscheidungen | `DECISIONS.md` |
 | Entwicklungsiterationen | `PROJEKTVERLAUF.md` |
+| Mobile Optimization Plan | `MOBILE_OPTIMIZATION.md` |
+| UX Research (Micro-Learning) | `UX_RESEARCH.md` |
 
 ---
 

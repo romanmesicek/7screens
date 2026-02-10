@@ -202,7 +202,7 @@ function App() {
 
   const appStyle = {
     width: '100vw',
-    height: '100vh',
+    height: '100svh',
     overflow: 'hidden',
     touchAction: 'pan-y',
   }

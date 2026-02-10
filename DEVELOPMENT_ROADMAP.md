@@ -118,6 +118,33 @@ IntroSplashScreen → 7 Intro-Screens → TransitionScreen → SplashScreen (SCO
 
 ---
 
+## Phase 2c: Mobile Optimization (Quick Wins)
+
+**Status:** ✅ Abgeschlossen (2026-02-09)
+
+### Kontext
+
+Umfassende Recherche zu Mobile Best Practices (6 Research-Agents). Ergebnisse in `MOBILE_OPTIMIZATION.md` und `UX_RESEARCH.md` dokumentiert.
+
+### Quick Wins (Phase A)
+
+- [x] `viewport-fit=cover` im Viewport Meta Tag
+- [x] `overscroll-behavior: none` auf html/body (verhindert Rubber-Banding + Pull-to-Refresh)
+- [x] `env(safe-area-inset-*)` auf Navigation (bottom) + ProgressBar (top)
+- [x] `theme-color` + `color-scheme: dark` Meta Tags
+- [x] `-webkit-font-smoothing: antialiased` + `text-size-adjust: 100%`
+- [x] `100vh` durch `100svh` ersetzen in App.jsx
+- [x] `hyphens: auto` + bestehendes `lang="de"` nutzen
+
+### Neue Dokumentation
+
+| Datei | Zweck |
+|-------|-------|
+| `MOBILE_OPTIMIZATION.md` | Vollstaendiger Optimierungsplan (Phase A-D) |
+| `UX_RESEARCH.md` | Detaillierte UX-Recherche (12 Themenbereiche, Quellen) |
+
+---
+
 ## Phase 3: Enhancement
 
 ### Aufgaben

@@ -6,6 +6,7 @@ export function ProgressBar({ moduleName, currentCard, totalCards, color, onBack
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: `${theme.spacing.md} ${theme.spacing.lg}`,
+    paddingTop: `max(${theme.spacing.md}, env(safe-area-inset-top, 0px))`,
     zIndex: 10,
   }
 

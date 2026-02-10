@@ -28,6 +28,37 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ## Entscheidungen
 
+### 2026-02-09 – Mobile Webapp Optimization (Phase A-D)
+
+**Kontext:** Umfassende Recherche zu Mobile Webapp Best Practices ergab 12 High-Priority und 18 Medium-Priority Issues. Die App soll langfristig auch als native iOS/Android-App (via Capacitor) laufen.
+
+**Recherche-Umfang:** 6 parallele Research-Agents zu:
+1. Mobile-First Webapp Design Patterns (Viewport Units, Safe Areas, Overscroll)
+2. iOS Safari Gotchas (100vh Bug, Touch Handling, PWA Limits)
+3. Android Chrome Issues (Edge-to-Edge, Back Gesture, Samsung Internet Bugs)
+4. UX Best Practices Micro-Learning (Transitions, Touch Targets, Typografie)
+5. Native-Wrapper-Vorbereitung (Capacitor vs TWA vs RN WebView)
+6. Audit des bestehenden Codes
+
+**Entscheidungen:**
+
+1. **Viewport Unit:** `100svh` (nicht `dvh`) fuer App-Shell -- stabiler Rahmen ohne Jitter bei Toolbar-Animation
+2. **Safe Areas:** `env(safe-area-inset-*)` mit `viewport-fit=cover` -- progressive Enhancement
+3. **Native Wrapper:** Capacitor (nicht TWA, nicht RN WebView) -- Zero Code Changes, iOS + Android, Native API Access
+4. **Overscroll:** `overscroll-behavior: none` auf Body, `contain` auf Card-Area
+5. **Font Rendering:** `-webkit-font-smoothing: antialiased` + `text-size-adjust: 100%`
+6. **German Typography:** `hyphens: auto` + `lang="de"`, Line-Height 1.6
+
+**Neue Dokumentation:**
+- `MOBILE_OPTIMIZATION.md` -- Vollstaendiger Optimierungsplan (Phase A-D)
+- `UX_RESEARCH.md` -- Detaillierte UX-Recherche (12 Themenbereiche)
+
+**Konsequenzen:**
+- Phase A (Quick Wins) sofort umsetzen
+- Phase B-D als Teil von Phase 3 (Enhancement) im Roadmap
+
+---
+
 ### 2026-02-09 – Two-Deck-Implementierung im bestehenden Repo
 
 **Kontext:** Statt wie ursprünglich geplant ein neues Repo anzulegen, wurde die Two-Deck-Architektur direkt im bestehenden Repo implementiert. Die App beginnt jetzt mit einem Intro-Deck (7-Screen-Modell erklärt) und führt dann zum bestehenden SCOPE-Deck.

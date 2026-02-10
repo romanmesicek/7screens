@@ -6,6 +6,7 @@ export function Navigation({ currentCard, totalCards, onPrev, onNext, color }) {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: `${theme.spacing.md} ${theme.spacing.lg}`,
+    paddingBottom: `max(${theme.spacing.md}, env(safe-area-inset-bottom, 0px))`,
     zIndex: 10,
   }
 
