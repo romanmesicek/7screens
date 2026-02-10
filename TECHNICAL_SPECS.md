@@ -9,7 +9,7 @@
 - **Styling:** Inline Styles oder CSS-in-JS (für Portabilität, keine externen CSS-Dateien)
 - **Animationen:** CSS-basiert (bessere Performance als JS-Animationen)
 - **State:** React Hooks (`useState`, `useEffect`) – kein Redux, kein Context API nötig
-- **Externe Abhängigkeiten:** Google Fonts (Poppins, Inter), Unsplash API (Bilder, ACCESS_KEY vorhanden)
+- **Externe Abhängigkeiten:** Google Fonts (DM Sans, Source Sans 3), Unsplash (statische Bilder, WebP)
 
 ### Deployment-Ziel
 
@@ -22,6 +22,24 @@
 - **Basis:** 390 × 700 px (mobil, Story-Format)
 - **Responsive:** Skalierung bis Desktop (max-width: 480px Container, zentriert)
 - **Orientierung:** Portrait-first, Landscape akzeptabel
+- **Viewport Meta:** `width=device-width, initial-scale=1.0, viewport-fit=cover`
+- **Viewport Height:** `100svh` (Small Viewport Height -- stabil, kein iOS-Address-Bar-Jitter)
+- **Safe Areas:** `env(safe-area-inset-top)` auf ProgressBar, `env(safe-area-inset-bottom)` auf Navigation
+
+### Mobile Hardening (seit 2026-02-09)
+
+| Massnahme | Datei | Zweck |
+|-----------|-------|-------|
+| `viewport-fit=cover` | `index.html` | Ermoeglicht Safe-Area-Handling |
+| `overscroll-behavior: none` | `index.html` | Verhindert Rubber-Banding + Pull-to-Refresh |
+| `env(safe-area-inset-*)` | Navigation, ProgressBar | Schutz vor Notch/Dynamic Island/Home Indicator |
+| `theme-color` + `color-scheme: dark` | `index.html` | Browser-Chrome-Farbe + Anti-Auto-Dark-Inversion |
+| `-webkit-font-smoothing: antialiased` | `index.html` | Besseres Font-Rendering auf dunklem Hintergrund |
+| `-webkit-text-size-adjust: 100%` | `index.html` | Verhindert Text-Inflation bei Orientierungswechsel |
+| `100svh` statt `100vh` | `App.jsx` | Behebt iOS Safari 100vh-Bug |
+| `hyphens: auto` | `index.html` | Silbentrennung fuer deutsche Komposita |
+
+Details: siehe `MOBILE_OPTIMIZATION.md`
 
 ---
 
