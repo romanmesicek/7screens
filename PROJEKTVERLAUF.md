@@ -199,19 +199,45 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 
 ---
 
-## Aktueller Status (2025-02-07)
+## Phase 13: PWA & Accessibility Sprint (2026-02-10)
+
+### 13.1 PWA Setup
+- `vite-plugin-pwa` installiert und konfiguriert
+- Service Worker mit Workbox (Precache 22 Einträge, 586KB)
+- manifest.webmanifest: standalone, portrait, #0F172A
+- App Icons: 5 Varianten (192, 512, maskable, apple-touch-icon)
+- favicon.svg erstellt (dunkler Hintergrund, "7" in Amber)
+- Apple Meta Tags (apple-mobile-web-app-capable, apple-touch-icon)
+- Google Fonts Runtime-Caching (CacheFirst, 1 Jahr)
+
+### 13.2 Swipe-Erkennung verbessert
+- Winkelprüfung: |dx| > |dy| * 1.5 (nur horizontale Gesten)
+- Geschwindigkeit: < 300ms Zeitfenster
+- Edge-Guard: startX > 30px (Android Back-Geste)
+
+### 13.3 ARIA & Semantik Korrekturen
+- `role="application"` → `role="region"` auf CardContainer
+- Navigation Dots: `tablist/tab` → `group` + `aria-hidden`
+- Interactive `<div>` → `<button>` in QuizCard, ActionCard, ModuleSelector
+- Manuelle `onKeyDown`-Handler entfernt (native Button-Verhalten)
+
+---
+
+## Aktueller Status (2026-02-10)
 
 ### Fertig
 - App vollständig implementiert und funktionsfähig
-- Alle 5 Module mit 35 Cards
+- Alle 5 Module mit 35 Cards + 7 Intro-Cards = 42 Cards
+- Two-Deck-Architektur (Intro + SCOPE)
 - Accessibility (WCAG 2.1 AA)
+- Mobile Optimization (Phase A + B1 + C teilweise)
+- PWA: Standalone-Modus, Offline-Support, Homescreen-Installation
 - GitHub Repository: https://github.com/romanmesicek/7screens
 
-### Nächster Schritt: Deployment
-1. Netlify: Site aus GitHub-Repo erstellen
-2. Custom Domain: `7screens.suska.app`
-3. DNS: CNAME `7screens` → `7screens.netlify.app`
-4. SSL: Automatisch via Let's Encrypt
+### Nächste Schritte
+1. Deployment auf Netlify (Konfiguration steht bereit)
+2. Sprint 2: Card-Transitions, localStorage-Persistence, Landscape-Warning
+3. Sprint 3: Farbkontrast-Fix, Self-Hosted Fonts, history.pushState
 
 ---
 
@@ -278,14 +304,15 @@ Dokumentation der Entwicklungsiterationen für spätere Visualisierung (Mermaid)
 |--------|------|
 | Komponenten | 14 |
 | Card-Typen | 7 |
-| Module | 5 |
-| Cards gesamt | 35 |
-| Bilder | 6 (WebP, Portrait) |
-| Iterationen | ~21 |
-| Dokumentationsdateien | 9 |
+| Module | 5 + 1 Intro = 6 |
+| Cards gesamt | 35 + 7 Intro = 42 |
+| Bilder | 8 (WebP, Portrait) |
+| Iterationen | ~24 |
+| Dokumentationsdateien | 11 |
+| PWA | Ja (Offline, Standalone, Installierbar) |
 
 ---
 
 *Erstellt: 2025-02-06*
-*Aktualisiert: 2025-02-07*
+*Aktualisiert: 2026-02-10*
 *Zweck: Grundlage für Mermaid-Prozessdiagramm*

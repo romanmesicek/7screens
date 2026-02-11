@@ -140,15 +140,13 @@ export function ActionCard({ card, color, checklistState, onChecklistChange }) {
 
       <div style={checklistStyle} role="group" aria-label="Reflexions-Checkliste">
         {card.checklistItems.map((item, index) => (
-          <div
+          <button
             key={index}
-            style={checkItemStyle(checklistState[index])}
+            style={{ ...checkItemStyle(checklistState[index]), font: 'inherit', color: 'inherit', textAlign: 'left', width: '100%' }}
             onClick={() => handleToggle(index)}
             role="checkbox"
             aria-checked={checklistState[index]}
             aria-label={`${item} – ${checklistState[index] ? 'bedacht' : 'noch nicht bedacht'}`}
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && handleToggle(index)}
           >
             <div style={checkboxStyle(checklistState[index])} aria-hidden="true">
               {checklistState[index] && '✓'}
@@ -159,7 +157,7 @@ export function ActionCard({ card, color, checklistState, onChecklistChange }) {
                 ? (card.badgeLabel?.checked || 'Bedacht ✓')
                 : (card.badgeLabel?.unchecked || 'Bedacht?')}
             </span>
-          </div>
+          </button>
         ))}
       </div>
     </div>

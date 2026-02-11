@@ -160,6 +160,22 @@ Umfassende Recherche zu Mobile Best Practices (6 Research-Agents). Ergebnisse in
   - [x] Landmarks (main, nav, header, banner) hinzugefügt
   - [x] aria-live für dynamische Inhalte (Fortschritt)
   - [ ] Keyboard-only Navigation testen
+- [x] PWA Setup (Phase B1 aus MOBILE_OPTIMIZATION.md)
+  - [x] `vite-plugin-pwa` integriert (Workbox, autoUpdate)
+  - [x] `manifest.webmanifest` generiert (standalone, portrait, #0F172A)
+  - [x] Service Worker mit Precache (22 Einträge, ~586KB)
+  - [x] App Icons erstellt (192, 512, maskable, apple-touch-icon-180)
+  - [x] Apple Meta Tags (`apple-mobile-web-app-capable`, `apple-touch-icon`)
+  - [x] `favicon.svg` erstellt
+  - [x] Google Fonts Runtime-Caching (CacheFirst, 1 Jahr)
+- [x] Swipe-Erkennung verbessert (Phase B2 aus MOBILE_OPTIMIZATION.md)
+  - [x] Winkelprüfung (|dx| > |dy| * 1.5)
+  - [x] Geschwindigkeitsprüfung (< 300ms)
+  - [x] Edge-Guard (startX > 30px, Android Back-Geste)
+- [x] ARIA-Korrekturen (Phase C aus MOBILE_OPTIMIZATION.md)
+  - [x] `role="application"` → `role="region"` auf CardContainer
+  - [x] Navigation Dots: `role="tablist/tab"` → `role="group"` + `aria-hidden`
+  - [x] Interaktive `<div>` durch `<button>` ersetzt (QuizCard, ActionCard, ModuleSelector)
 - [ ] Light Mode als Alternative zum Dark Mode
   - Theme-Toggle implementieren
   - Neue Farbpalette für Light Mode definieren

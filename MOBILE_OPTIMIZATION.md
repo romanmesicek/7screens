@@ -1,6 +1,6 @@
 # Mobile Optimization Plan
 
-**Datum:** 2026-02-09 (erstellt), 2026-02-09 (aktualisiert)
+**Datum:** 2026-02-09 (erstellt), 2026-02-10 (aktualisiert)
 **Kontext:** Umfassende Recherche zu Mobile Webapp Best Practices, iOS Safari Gotchas, Android Chrome Issues, UX Patterns und Native-Wrapper-Vorbereitung. Ergebnisse aus 6 parallelen Research-Agents.
 
 ---
@@ -46,10 +46,10 @@ Die App-Architektur ist **grundsaetzlich solide** (Card-basiert, Story-Format, D
 ### Empfohlene Reihenfolge
 
 ```
-PRIORITAET 1 (Naechster Sprint -- max. 2h)
-├── PWA Setup (Manifest + Service Worker + Icons)
-├── Swipe-Erkennung verbessern (Winkel + Edge-Guard)
-└── role="application" durch role="region" ersetzen
+PRIORITAET 1 (Naechster Sprint -- max. 2h) ✅ ABGESCHLOSSEN (2026-02-10)
+├── ✅ PWA Setup (Manifest + Service Worker + Icons)
+├── ✅ Swipe-Erkennung verbessern (Winkel + Edge-Guard)
+└── ✅ role="application" durch role="region" ersetzen
 
 PRIORITAET 2 (Qualitaet -- ~3h)
 ├── State-Persistenz (localStorage)
@@ -57,9 +57,9 @@ PRIORITAET 2 (Qualitaet -- ~3h)
 ├── Quiz-Feedback in Sicht scrollen
 └── Landscape-Warning Overlay
 
-PRIORITAET 3 (Accessibility -- ~2h)
-├── Interactive <div> durch <button> ersetzen
-├── ARIA-Rollen korrigieren (Navigation Dots)
+PRIORITAET 3 (Accessibility -- ~2h) -- teilweise abgeschlossen
+├── ✅ Interactive <div> durch <button> ersetzen (2026-02-10)
+├── ✅ ARIA-Rollen korrigieren (Navigation Dots) (2026-02-10)
 ├── Image Alt-Texte verwenden
 └── Nav-Buttons von 44px auf 48px
 

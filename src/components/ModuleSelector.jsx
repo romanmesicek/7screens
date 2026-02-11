@@ -200,13 +200,11 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
         {modules.map((m) => {
           const isCompleted = completedModules.includes(m.id)
           return (
-            <div
+            <button
               key={m.id}
-              style={moduleButtonStyle(m.color, isCompleted)}
+              style={{ ...moduleButtonStyle(m.color, isCompleted), font: 'inherit', color: 'inherit', width: '100%' }}
               onClick={() => onSelectModule(m.id)}
               role="listitem"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && onSelectModule(m.id)}
               aria-label={`Modul ${m.id}: ${m.name} – ${m.question}${isCompleted ? ' (abgeschlossen)' : ''}`}
             >
               <div style={moduleLetterStyle(m.color, isCompleted)} aria-hidden="true">
@@ -216,7 +214,7 @@ export function ModuleSelector({ onSelectModule, completedModules = [], onBack }
                 <div style={moduleNameStyle}>{m.name}</div>
                 <div style={moduleQuestionStyle}>{m.question}</div>
               </div>
-            </div>
+            </button>
           )
         })}
       </div>

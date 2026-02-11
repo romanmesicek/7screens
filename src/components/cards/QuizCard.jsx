@@ -134,18 +134,18 @@ export function QuizCard({ card, color, selectedAnswer, onAnswerSelect }) {
           }
 
           return (
-            <div
+            <button
               key={index}
-              style={getOptionStyle(index, option)}
+              style={{ ...getOptionStyle(index, option), font: 'inherit', color: 'inherit', textAlign: 'left', width: '100%' }}
               onClick={() => handleSelect(index)}
               role="radio"
               aria-checked={isSelected}
               aria-label={ariaLabel}
               tabIndex={selectedAnswer === null ? 0 : -1}
-              onKeyDown={(e) => e.key === 'Enter' && handleSelect(index)}
+              disabled={selectedAnswer !== null}
             >
               <span style={optionTextStyle}>{option.text}</span>
-            </div>
+            </button>
           )
         })}
       </div>

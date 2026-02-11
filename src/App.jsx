@@ -169,20 +169,26 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [screen, goNext, goPrev, goBack])
 
-  // Touch handlers for swipe
+  // Touch handlers for swipe (with angle check, velocity, and edge-guard)
   const handleTouchStart = (e) => {
-    setTouchStart(e.touches[0].clientX)
+    setTouchStart({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+      time: Date.now(),
+    })
   }
 
   const handleTouchEnd = (e) => {
-    if (touchStart === null) return
+    if (!touchStart) return
 
-    const touchEnd = e.changedTouches[0].clientX
-    const diff = touchStart - touchEnd
+    const dx = touchStart.x - e.changedTouches[0].clientX
+    const dy = touchStart.y - e.changedTouches[0].clientY
+    const dt = Date.now() - touchStart.time
 
-    // 50px threshold
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
+    // Horizontal swipe: |dx| > 50px, more horizontal than vertical (1.5x),
+    // within 300ms, and not from left edge (Android back gesture zone)
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 300 && touchStart.x > 30) {
+      if (dx > 0) {
         goNext()
       } else {
         goPrev()

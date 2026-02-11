@@ -28,6 +28,33 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 ## Entscheidungen
 
+### 2026-02-10 – PWA Setup & Accessibility-Korrekturen (Sprint 1)
+
+**Kontext:** Die App war funktional komplett, aber fühlte sich im Browser wie eine Website an. PWA war als höchste Priorität in MOBILE_OPTIMIZATION.md dokumentiert. Gleichzeitig gab es mehrere ARIA-Fehlverwendungen und semantische HTML-Probleme.
+
+**Entscheidungen:**
+
+1. **PWA-Tooling:** `vite-plugin-pwa` mit Workbox (nicht manueller Service Worker)
+   - Begründung: Automatische Precache-Manifest-Generierung aus Vite-Build, autoUpdate-Strategie
+   - Ergebnis: 22 Precache-Einträge, 586KB, vollständig offline-fähig
+
+2. **Manifest:** `display: standalone`, `orientation: portrait`
+   - Begründung: Entfernt Browser-Chrome, sperrt auf Hochformat im PWA-Modus
+
+3. **Icons:** SVG-basiert generiert (Hintergrund #0F172A, "7" in Amber #D97706)
+   - 5 Varianten: icon-192, icon-512, maskable-192, maskable-512, apple-touch-icon-180
+
+4. **Swipe-Erkennung:** Winkelprüfung + Geschwindigkeit + Edge-Guard
+   - Begründung: 50px-Threshold ohne Winkelprüfung löste bei diagonalem Scrollen aus
+
+5. **`role="application"` → `role="region"`** auf CardContainer
+6. **Interactive `<div>` → `<button>`** in QuizCard, ActionCard, ModuleSelector
+7. **Navigation Dots:** `role="tablist/tab"` → `role="group"` + `aria-hidden`
+
+**Betroffene Dateien:** `vite.config.js`, `index.html`, `src/App.jsx`, `CardContainer.jsx`, `Navigation.jsx`, `QuizCard.jsx`, `ActionCard.jsx`, `ModuleSelector.jsx`, neue `public/favicon.svg`, `public/icons/*`
+
+---
+
 ### 2026-02-09 – Mobile Webapp Optimization (Phase A-D)
 
 **Kontext:** Umfassende Recherche zu Mobile Webapp Best Practices ergab 12 High-Priority und 18 Medium-Priority Issues. Die App soll langfristig auch als native iOS/Android-App (via Capacitor) laufen.
@@ -180,12 +207,12 @@ Neue Einträge werden oben eingefügt (neueste zuerst).
 
 | Komponente | ARIA-Attribute |
 |------------|----------------|
-| Navigation | `role="navigation"`, `role="tablist"` für Dots, `aria-selected` |
+| Navigation | `role="navigation"`, `role="group"` für Dots, `aria-hidden` auf einzelne Dots |
 | QuizCard | `role="radiogroup"`, `role="radio"`, `aria-checked`, dynamische Labels |
 | ActionCard | `role="group"`, `aria-label` mit Status (bedacht/nicht bedacht) |
 | ModuleSelector | `role="list"`, `aria-label` mit Modulinfo und Status |
 | ProgressBar | `role="banner"`, `aria-live="polite"` für Fortschritt |
-| CardContainer | `role="application"`, `main` Landmark |
+| CardContainer | `role="region"`, `main` Landmark |
 | SplashScreen | `main` Landmark mit `id="main-content"` |
 | index.html | Skip Link für Keyboard-Navigation |
 

@@ -56,16 +56,14 @@ export function Navigation({ currentCard, totalCards, onPrev, onNext, color }) {
 
       <div
         style={dotsContainerStyle}
-        role="tablist"
+        role="group"
         aria-label={`Fortschritt: Karte ${currentCard + 1} von ${totalCards}`}
       >
         {Array.from({ length: totalCards }, (_, i) => (
           <div
             key={i}
             style={dotStyle(i === currentCard)}
-            role="tab"
-            aria-selected={i === currentCard}
-            aria-label={`Karte ${i + 1}${i === currentCard ? ' (aktuell)' : ''}`}
+            aria-hidden="true"
           />
         ))}
       </div>
